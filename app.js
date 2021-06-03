@@ -39,6 +39,6 @@ app.use((req, res) => {
     res.render('404.html')
 })
 
-app.listen(1314, () => {
-    console.log('1314 server is running')
+app.listen(80, () => {
+    console.log('80 server is running')
 })

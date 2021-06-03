@@ -1,0 +1,114 @@
+<!doctype html>
+<!--声明文档类型为html5网页-->
+<html>
+<!--存放网页所有内容 开始标签-->
+
+<head>
+	<!--存放网页提供给搜索引擎的信息-->
+	{{include '../head.html'}}
+	<link rel="stylesheet" type="text/css" href="/public/css/register.css">
+	<style></style>
+</head>
+
+<body>
+	<!--存放用户查看的内容-->
+	<header id="header">
+		<div class="whitebgl"></div>
+		{{include '../nav_menu.html'}}
+	</header>
+	<form name="register_name" id="register-name">
+		<fieldset class="registered">
+			<legend>注册</legend>
+			<p id="valid-tip"></p>
+			<input type="text" name="name" placeholder="昵称" required>
+			<label>
+				<input type="password" oninput="pwdValid(value)" name="password" maxlength="16"
+					placeholder="密码(6-16个字符组成,区分大小写)" required>
+				<p class="validate"></p>
+			</label>
+
+			<p class="tellphone">
+				<select size="1">
+					<optgroup label="中国地区">
+						<option value="China">中国大陆</option>
+						<option value="HongKong">香港特别行政区</option>
+						<option value="macau">澳门特别行政区</option>
+						<option value="Taiwan">台湾地区</option>
+					</optgroup>
+					<optgroup label="其他地区">
+						<option value="Belgium">比利时</option>
+						<option value="Australia">澳大利亚</option>
+						<option value="Canada">加拿大</option>
+						<option value="Japan">日本</option>
+						<option value="SouthKorea">韩国</option>
+						<option value="Singapore">新加坡</option>
+						<option value="Malaysia">马来西亚</option>
+						<option value="England">英国</option>
+						<option value="Italy">意大利</option>
+						<option value="Germany">德国</option>
+						<option value="NewZealand">新西兰</option>
+						<option value="Russia">俄罗斯</option>
+					</optgroup>
+				</select>
+				<input class="phone" type="tel" name="phone" placeholder="填写常用手机号" required
+					oninput="value=value.replace(/[^\d]/g,'')">
+			</p>
+			<!-- <a style="margin-top: -5px">用邮箱注册></a> -->
+			<p class="telNum-wrap">
+				<input class="telNum" type="text" name="code" placeholder="请输入短信验证码" required>
+				<input class="telNum-btn" type="button" value="点击获取">
+			</p>
+
+			<div class="check-wrap">
+				<input class="checked" type="checkbox" checked>我已同意
+				<a>《pwFour动漫网用户使用协议》</a>和
+				<a>《pwFour动漫网账号中心规范》</a>
+				<input class="register-btnbg" type="submit" value="注册">
+			</div>
+			<a style="margin-top: 8px;margin-bottom: 50px;" href="/login">已有账号,直接登录></a>
+		</fieldset>
+	</form>
+
+	{{ include '../footer.html' }}
+	<script src="/node_modules/jquery/dist/jquery.js"></script>
+	<script src="/public/js/ajax.js"></script>
+	<script src="/public/js/api.js"></script>
+	<script src="/node_modules/jsencrypt/bin/jsencrypt.min.js"></script>
+	<script>
+		const checkboxChecked = document.querySelector('.checked');
+		let pwdStr = '';
+		$('#register-name').on('submit', (e) => {
+			e.preventDefault();
+			const formData = $('form').serialize();
+			if (pwdStr) return;
+			if (checkboxChecked.checked) {
+				let data = ajaxTools.formatPostStrParams(decodeURI(formData));
+				ajaxTools.post(registerApi,
+					data,
+					(value) => {
+						const status = value.status;
+						if (status === 0) {
+							window.alert('注册成功');
+							localStorage.setItem('isLogin', true);
+							window.location.href = '/index';
+						} else if (status === 1) {
+							$('#valid-tip')
+								.addClass('valid-tip')
+								.html(value.msg);
+						} else if (status === 500) {
+							window.alert('操作失败, 请稍后重试');
+						}
+					}, { 'Content-type': 'application/json' })
+			}
+		})
+
+		function pwdValid(value) {
+			const reg = /^[0-9a-zA-Z]{6,16}$/;
+			let str = value.replace(/\s/g, '');
+			pwdStr = reg.test(str) ? '' : '密码长度为6~16';
+			$('.validate').html(pwdStr);
+		}
+	</script>
+</body>
+
+</html>

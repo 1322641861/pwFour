@@ -1,0 +1,85 @@
+<!doctype html>
+<!--声明文档类型为html5网页-->
+<html>
+<!--存放网页所有内容 开始标签-->
+
+<head>
+	<!--存放网页提供给搜索引擎的信息-->
+	{{include '../head.html'}}
+	<link rel="stylesheet" type="text/css" href="/public/css/login.css">
+	<style></style>
+</head>
+
+<body>
+	<!--存放用户查看的内容-->
+	<header id="header">
+		<div class="whitebgl"></div>
+		{{include '../nav_menu.html'}}
+	</header>
+	<form>
+		<fieldset class="InTheLogin">
+			<legend>登录</legend>
+			<div class="wrapL">
+				<div class="code"></div>
+				<p style="font-size: 18px;letter-spacing: 2px;">扫描二维码登录</p>
+				<ul>
+					<li>请使用<a>pwFour</a></li>
+					<li>扫码登录</li>
+					<li>或扫码下载APP</li>
+				</ul>
+			</div>
+			<div class="wrapR">
+				<input type="text" name="phone" placeholder="您的手机号" oninput="value=value.replace(/[^\d]/g,'')" required>
+				<input type="password" name="password" placeholder="密码" required>
+				<label>
+					<input type="checkbox" name="keep" value=true checked>记住我
+				</label>
+				<a>忘记密码?</a>
+				<p>
+					<input class="btn" type="submit" value="登录">
+					<input class="btn" type="button" value="注册" onclick='javascript:window.location.href="/registered"'>
+				</p>
+				<ul>
+					<li><span class="weibologin"></span>微博账号登录</li>
+					<li><span class="QQlogin"></span>QQ账号登录</li>
+				</ul>
+			</div>
+		</fieldset>
+		<p class="login-agree">登录即代表你同意
+			<a target="_blank" href="https://www.bilibili.com/protocal/licence.html">用户协议</a>
+			和 <a target="_blank" href="https://www.bilibili.com/blackboard/privacy-pc.html">隐私政策</a>
+		</p>
+	</form>
+
+	{{ include '../footer.html' }}
+	
+	<script src="/public/js/ajax.js"></script>
+	<script src="/public/js/api.js"></script>
+	<script>
+		$('form').on('submit', (e) => {
+			e.preventDefault();
+			const formData = $('form').serialize();
+			let data = ajaxTools.formatPostStrParams(decodeURI(formData));
+			ajaxTools.post(loginApi,
+				data,
+				(value) => {
+					const status = value.status;
+					if (status === 0) {
+						window.alert('登录成功');
+						localStorage.setItem('isLogin', true);
+						window.location.href = '/index';
+					} else if (status === 1) {
+						// $('#valid-tip')
+						// 	.addClass('valid-tip')
+						// 	.append(value.msg);
+						window.alert(value.msg);
+					} else if (status === 500) {
+						window.alert('操作失败, 请稍后重试');
+					}
+				}, { 'Content-type': 'application/json' })
+		})
+
+	</script>
+</body>
+
+</html>

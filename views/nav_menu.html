@@ -1,0 +1,176 @@
+<div class="nav-menu">
+    <div class="content">
+        <ul class="nav-con fl">
+            <li title="主站"><a href="/index"><i class="b-ico"></i>主站</a>
+            <li>
+                <span title="游戏中心">游戏中心</span>
+                <div class="game-more">
+                    <div class="left">
+                        <img src="/public/images/header/gamecenter/1.jpg">
+                        <ul class='list clearfix'>
+                            <li>
+                                <figure>
+                                    <img src="/public/images/header/gamecenter/2.png">
+                                    <p>碧蓝航线</p>
+                                </figure>
+                            </li>
+                            <li>
+                                <figure>
+                                    <img src="/public/images/header/gamecenter/3.png">
+                                    <p>崩坏三</p>
+                                </figure>
+                            </li>
+                            <li>
+                                <figure>
+                                    <img src="/public/images/header/gamecenter/4.png">
+                                    <p>影之诗</p>
+                                </figure>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="right">
+                        <p><a href="">游戏论坛</a></p>
+                        <ul class="announce">
+                            <li>
+                                <p>方舟指令</p>
+                                <img src="/public/images/header/gamecenter/tui1.png">
+                            </li>
+                            <li>
+                                <p>方舟指令</p>
+                                <img src="/public/images/header/gamecenter/tui2.png">
+                            </li>
+                            <li>
+                                <p>方舟指令</p>
+                                <img src="/public/images/header/gamecenter/tui1.png">
+                            </li>
+                            <li>
+                                <p>方舟指令</p>
+                                <img src="/public/images/header/gamecenter/tui2.png">
+                            </li>
+                            <li>
+                                <p>方舟指令</p>
+                                <img src="/public/images/header/gamecenter/tui1.png">
+                            </li>
+                            <li>
+                                <p>方舟指令</p>
+                                <img src="/public/images/header/gamecenter/tui2.png">
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <span title="直播">直播</span>
+                <div class="live-more">
+                    <div class="left">
+                        <p>热门直播:</p>
+                        <ul class="liver">
+                            <li>
+                                <img class="face" src="/public/images/header/gamecenter/head1.jpg">
+                                <p class="name">柯南</p>
+                            </li>
+                            <li>
+                                <img class="face" src="/public/images/header/gamecenter/head1.jpg">
+                                <p class="name">柯南</p>
+                            </li>
+                            <li>
+                                <img class="face" src="/public/images/header/gamecenter/head1.jpg">
+                                <p class="name">柯南</p>
+                            </li>
+                            <li>
+                                <img class="face" src="/public/images/header/gamecenter/head1.jpg">
+                                <p class="name">柯南</p>
+                            </li>
+                            <li>
+                                <img class="face" src="/public/images/header/gamecenter/head1.jpg">
+                                <p class="name">柯南</p>
+                            </li>
+                            <li>
+                                <img class="face" src="/public/images/header/gamecenter/head1.jpg">
+                                <p class="name">柯南</p>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="right">
+                        <p>热门活动:</p>
+                        <a href=""><img src="/public/images/header/gamecenter/huodong1.jpg"></a>
+                        <a href=""><img src="/public/images/header/gamecenter/huodong2.jpg"></a>
+                    </div>
+                </div>
+            </li>
+            <li title="会员购">会员购</li>
+            <li>
+                <span title="下载APP"><i class='b-iphone'></i>下载APP</span>
+                <div class="app-more"></div>
+            </li>
+        </ul>
+        <ul class="login fr">
+            <li class="contribute">
+                <span>投 稿</span>
+                <ul class="contribute-more">
+                    <li><i class=""></i>创作中心</li>
+                    <li><i></i>投稿专栏</li>
+                    <li><i></i>投稿专栏</li>
+                    <li><i></i>投稿专栏</li>
+                    <li><i></i>投稿专栏</li>
+                </ul>
+            </li>
+            <li class="history">
+                <span>历史</span>
+                {{if user}}
+                <div class="logged-history">
+                    <div class="history-tab"><span>视频历史</span></div>
+                    <p class="no-data">暂无记录</p>
+                </div>
+                {{else}}
+                <div class="history-more">
+                    <p>登录后有更多功能哦~</p>
+                    <input type="submit" name="submit" value='登录' onclick='javascript:window.location.href="/login"'>
+                    <p class="data">没有数据哟</p>
+                    <a href="">
+                        <p class="more">查看更多 </p>
+                    </a>
+                </div>
+                {{/if}}
+                
+            </li>
+            <li class="login-bar">
+                <img class="login-head" src="/public/images/favicon.ico">
+                {{if user}}
+                <div class="login-more logged-more">
+                    <h3 class="user-name">{{user.name}}</h3>
+                    <ul class="user-fens-wrap">
+                        <li>
+                            <a>
+                                <span>关注</span>
+                                <span class="user-fens">132</span>
+                            </a>
+                        </li>
+                        <li><a>
+                                <span>粉丝</span>
+                                <span class="user-fens"></span>
+                            </a>
+                        </li>
+                        <li><a>
+                                <span>动态</span>
+                                <span class="user-fens"></span>
+                            </a>
+                        </li>
+                    </ul>
+                    <input type="submit" name="login" value="退出" onclick='javascript:window.location.href="/logout"'>
+                </div>
+                {{else}}
+                <div class="login-more">
+                    <p>登陆后你可以：</p>
+                    <div></div>
+                    <img class="danmu" src="/public/images/header/danmu (2).png">
+                    <input type="submit" name="login" value="登陆" onclick='javascript:window.location.href="/login"'>
+                    <p class="rigister">首次使用？<a href="/registered" style="color: #00a1d6">点我去注册</a></p>
+                </div>
+                {{/if}}
+
+
+            </li>
+        </ul>
+    </div>
+</div>

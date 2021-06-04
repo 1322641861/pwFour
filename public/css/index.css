@@ -525,6 +525,7 @@ body{
 	height: 30px;
 	width: 50px;
 	background: url('../images/icons.png') -644px -721px;
+	cursor: pointer;
 }
 /* search end*/
 

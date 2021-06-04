@@ -1,11 +1,3 @@
-/**
- * Created by Administrator on 2018/1/10.
- * form by �úú�����
- * email 1570302023@qq.com
- *
- *
- *
- */
 
 $(function(){
     $('.bot-img ul li').click(function(){

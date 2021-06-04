@@ -1,7 +1,7 @@
 var express = require('express')
 var bodyParser = require('body-parser')
 var path = require('path')
-var router = require('./router')
+var router = require('./routers/router')
 var session = require('express-session')
 
 var app = express()

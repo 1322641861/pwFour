@@ -12,6 +12,7 @@
   "author": "'BiBoNiu'",
   "license": "ISC",
   "devDependencies": {
+    "http-proxy-middleware": "^0.17.2",
     "nodemon": "^2.0.7"
   }
 }

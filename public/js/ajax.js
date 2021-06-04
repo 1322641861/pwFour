@@ -1,7 +1,7 @@
 
 const ajaxTools = {
     get: (url, body, callback) => {
-        let bodyStr = typeof body === string 
+        let bodyStr = typeof body === String 
             ? ajaxTools.formatGetStrParams(body)
             : ajaxTools.formatGetParams(body)
         
@@ -23,7 +23,6 @@ const ajaxTools = {
         xhr.onreadystatechange = () => {
             if (xhr.readyState === 4) {
                 if (xhr.status >= 200 && xhr.status <= 300 || xhr.status === 304) {
-                    console.log(xhr.responseText)
                     callback(xhr.responseText)
                 }
             }

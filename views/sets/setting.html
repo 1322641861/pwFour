@@ -1,0 +1,42 @@
+<div class="setting">
+    <span></span>
+    <span>我的信息</span>
+</div>
+<div class="set-content">
+    <div class="set-wrap">
+        <form>
+            <div class="set-line form-group">
+                <span>昵称:</span>
+                <input required class="form-control form-name" name="name" minlength="2" maxlength="10" type="text"
+                    id='name' value={{user.name}} placeholder="请输入名称">
+            </div>
+            <div class="set-line">
+                <span>用户ID:</span>
+                <span class="user-id">{{@user._id}}</span>
+            </div>
+            <div class="set-line set-sign">
+                <span>我的签名:</span>
+                <textarea class="form-control form-sign" name="description" id="msg" maxlength="30" cols="30" rows="4"
+                    placeholder="设置您的签名- ( ゜- ゜)つロ">{{user.description}}</textarea>
+            </div>
+            <div class="set-line set-sex"  data-sex={{user.sex}}>
+                <span>性别:</span>
+                <label for="men">男</label>
+                <input name="sex"  data-sex={{user.sex}} type="radio" value=0 id='men'>
+                <label for="women">女</label>
+                <input name="sex"  data-sex={{user.sex}}  type="radio" value=1 id='women'>
+                <label for="women">保密</label>
+                <input name="sex"  data-sex={{user.sex}}  type="radio" value=-1 id='sex-id' checked>
+            </div>
+            <div class="set-line">
+                <span>出生日期:</span>
+                <span class="hidden-birthday">{{user.birthday}}</span>
+                <input type="text" name="birthday" class="layui-input form-control" id="birthday">
+            </div>
+            <div class="set-submit">
+                <div></div>
+                <input class="default-btn" type="submit" value="保存">
+            </div>
+        </form>
+    </div>
+</div>

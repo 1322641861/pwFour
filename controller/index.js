@@ -12,6 +12,7 @@ const getTitleName = (path) => {
         'drama': `番剧-${temp}`,
         'login': `${temp}`,
         'registered': `${temp}`,
+        'account': temp,
     }
     return TITLE_NAME[path.split('/')[1]]
 }
@@ -92,7 +93,8 @@ function exportsList() {
         'getDrama': getDrama,
         'getIndex': getIndex,
         'getMovie': getMovie,
-        'getDance': getDance
+        'getDance': getDance,
+        'getTitleName': getTitleName
     }
     for (const item in getList) {
         exports[item] = getList[item]

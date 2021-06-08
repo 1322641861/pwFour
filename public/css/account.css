@@ -1,0 +1,145 @@
+.user {
+    width: 980px;
+    margin: 50px auto 100px;
+    box-shadow: 0 3px 3px #eee;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    overflow: hidden;
+    background: #fafafa;
+}
+.user .nav {
+    width: 150px;
+    float: left;
+    overflow: hidden;
+    line-height: 50px;
+    font-size: 16px;
+}
+.nav .mine {
+    border-right: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    text-align: center;
+    color: #99a2aa;
+    height: 50px;
+}
+.nav-ul li:first-child span {
+    letter-spacing: 29px;
+}
+.nav-ul li {
+    height: 48px;
+    line-height: 48px;
+    font-size: 14px;
+    color: #222;
+}
+.nav-ul li:hover {
+    cursor: pointer;
+    background: #e1e4ea;
+}
+.nav-ul li i {
+    margin-left: 16px;
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    vertical-align: middle;
+    background-image: url(/public/images/sets_icon.png);
+    background-size: 1039px;
+}
+.nav-checked {
+    background: #00a1d7!important;
+    color: #fff!important;
+}
+ .nav .nav-checked .icon-0 {
+    background-position: -86px -19px;
+}
+.icon-0 {
+    background-position: -21px -19px;
+}
+
+.nav .nav-checked .icon-1 {
+    background-position: -86px -85px;
+}
+.icon-1 {
+    background-position: -21px -85px;
+}
+
+.nav .nav-checked .icon-2 {
+    background-position: -86px -152px;
+}
+.icon-2 {
+    background-position: -21px -152px;
+}
+
+.user .content {
+    float: left;
+    width: 830px;
+    background: #fff;
+}
+.content .setting {
+    font-size: 14px;
+    color: #00a1d7;
+    padding-left: 30px;
+    height: 50px;
+    border-bottom: 1px solid #ddd;
+}
+.setting span:first-child {
+    margin-right: 3px;
+    width: 4px;
+    height: 17px;
+    margin-top: 17px;
+    display: inline-block;
+    vertical-align: text-bottom;
+    background-color: #00a1d7;
+    border-radius: 4px;
+}
+.set-content {
+    border-left: 1px solid #ddd;
+}
+.set-wrap {
+    padding: 16px 20px;
+    position: relative;
+}
+.set-content .set-line {
+    /* height: 30px; */
+    line-height: 30px;
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+.set-line>span {
+    width: 100px;
+    display: inline-block;
+    text-align: end;
+    margin-right: 5px;
+}
+.set-line .user-id {
+    width: auto;
+    color: #999;
+}
+.set-submit {
+    text-align: center;
+    margin-bottom: 20px;
+}
+.set-submit div:first-child {
+    height: 30px;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 30px;
+}
+.set-line .form-name {
+    display: inline-block;
+    width: 250px;
+}
+.set-line .form-sign {
+    width: 618px;
+    display: inline-block;
+    margin-left: 4px;
+}
+.set-sign {
+    display: flex;
+}
+#birthday {
+    width: 180px;
+    display: inline-block;
+}
+.hidden-birthday {
+    position: absolute;
+    z-index: -1;
+    visibility: hidden;
+}

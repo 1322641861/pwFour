@@ -3,6 +3,7 @@ var bodyParser = require('body-parser')
 var path = require('path')
 var router = require('./routers/router')
 var session = require('express-session')
+const { get404Page } =require('./controller/others')
 
 var app = express()
 
@@ -34,10 +35,7 @@ app.use(session({
 // 使用路由管理, 把路由挂载到app中
 // app.use(express.Router())
 app.use(router)
-
-app.use((req, res) => {
-    res.render('404.html')
-})
+app.use(get404Page)
 
 app.listen(80, () => {
     console.log('80 server is running')

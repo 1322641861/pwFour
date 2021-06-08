@@ -114,7 +114,7 @@
                     <li><i></i>投稿专栏</li>
                     <li><i></i>投稿专栏</li>
                 </ul>
-            </li>
+            </li> 
             <li class="history">
                 <span>历史</span>
                 {{if user}}
@@ -135,7 +135,14 @@
                 
             </li>
             <li class="login-bar">
+                {{if user.avatar}} 
+                <a href="/account/home" class="avatar-border">
+                    <img class="login-head" src={{user.avatar}}>
+                </a>
+                {{else}}
                 <img class="login-head" src="/public/images/favicon.ico">
+                {{/if}}
+               
                 {{if user}}
                 <div class="login-more logged-more">
                     <h3 class="user-name">{{user.name}}</h3>
@@ -157,10 +164,18 @@
                             </a>
                         </li>
                     </ul>
-                    <input type="submit" name="login" value="退出" onclick='javascript:window.location.href="/logout"'>
+                    <ul class="user-sets">
+                        <li>
+                            <a href="/account/home">
+                                <i></i>
+                                <span>个人中心</span>
+                            </a>
+                        </li>
+                    </ul>
+                    <input type="submit" name="login" value="退出" onclick='userLogout()'>
                 </div>
                 {{else}}
-                <div class="login-more">
+                <div class="login-more not-logged">
                     <p>登陆后你可以：</p>
                     <div></div>
                     <img class="danmu" src="/public/images/header/danmu (2).png">
@@ -168,9 +183,14 @@
                     <p class="rigister">首次使用？<a href="/registered" style="color: #00a1d6">点我去注册</a></p>
                 </div>
                 {{/if}}
-
-
             </li>
         </ul>
     </div>
 </div>
+<script>
+    function userLogout() {
+        window.location.href = '/logout';
+        localStorage.setItem('logined_token', '');
+    }
+    // const logginMsg = sessionStorage.getItem('logined');
+</script>

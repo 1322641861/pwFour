@@ -50,5 +50,14 @@
 <script src="/node_modules/jquery/dist/jquery.js"></script>
 <script src="/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="/public/js/ajax.js"></script>
-<script src="/public/js/api.js"></script>
-<script src="/public/js/search.js"></script>
+<script src="/public/js/search.js" type="module"></script>
+
+<script>
+    ajaxTools.post('/login_nav',
+        {},
+        (value) => {
+            // sessionStorage.setItem('logined', value)
+        },
+        { 'Content-type': 'text/html' }
+    )
+</script>

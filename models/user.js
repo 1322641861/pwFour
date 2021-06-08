@@ -28,6 +28,10 @@ var userSchema = new Schema({
         type: Date,
         default: Date.now
     },
+    birthday: {
+        type: String,
+        default: ''
+    },
     avatar: {
         type: String,
         default: '/public/images/avatar_default.png'
@@ -40,9 +44,6 @@ var userSchema = new Schema({
         type: Number,
         default: -1, // 0女, 1男, -1保密
         enum: [-1, 0, 1]
-    },
-    birthday: {
-        type: Date
     },
     status: {
         type: Number,

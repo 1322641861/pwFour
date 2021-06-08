@@ -1,5 +1,9 @@
-const registerApi = '/registered'; // 注册
-
-const loginApi = '/login'; // 注册
-
-const searchApi = "/sugrec";
+const API = {
+    registerApi: '/registered', // 注册
+    loginApi: '/login', // 注册
+    searchApi: "/sugrec",
+    logoutApi: '/logout',
+    accountApi: '/member/account', // account userInfo
+    setsUpdateApi: '/sets/update' 
+}
+export { API }

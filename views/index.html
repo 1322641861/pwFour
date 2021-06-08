@@ -1,39 +1,35 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 	{{include './head.html'}}
 	<link rel="stylesheet" type="text/css" href="/public/css/index.css">
 	<style></style>
 </head>
+
 <body>
 	<header id="header">
-		<div class="mask"></div>	
+		<div class="mask"></div>
 		{{include './nav_menu.html'}}
 		{{include './search.html'}}
 		{{include './nav.html'}}
 	</header>
 	<section id='most-view'>
 		<div class="content">
-			<div class="swiper-container most"><!-- 轮播插件-->
-			    <div class="swiper-wrapper">
-			        <div class="swiper-slide">
-						<img src="/public/images/swiper/1.jpg" alt="">
-			        </div>
-			       	<div class="swiper-slide">
-						<img src="/public/images/swiper/6.jpg" alt="">
-			        </div>
-			        <div class="swiper-slide">
-						<img src="/public/images/swiper/3.jpg" alt="">
-			        </div>
-			        <div class="swiper-slide">
-						<img src="/public/images/swiper/7.jpg" alt="">
-			        </div>
-			        <div class="swiper-slide">
-						<img src="/public/images/swiper/5.jpg" alt="">
-			        </div>
-			    </div>
-			    <!-- 如果需要分页器 -->
-			    <div class="swiper-pagination"></div>
+			<div class="border">
+				<div class="imgPlay">
+					<ul class="list clearfix">
+						<li class="item">
+							<img src="/public/images/swiper/0.jpg" alt="家庭照片">
+						</li>
+						<li class="item">
+							<img src="/public/images/swiper/1.jpg" alt="家庭照片">
+						</li>
+					</ul>
+					<!-- <div class="left">上一张</div>
+					<div class="play">动画播放</div>
+					<div class="right">下一张</div> -->
+				</div>
 			</div>
 			<ul class="most-list">
 				<li>
@@ -152,7 +148,7 @@
 								<p class="play">播放量: 99.9万</p>
 								<p class="comment">评论</p>
 							</div>
-							
+
 						</div>
 					</li>
 					<li>
@@ -166,7 +162,7 @@
 								<p class="play">播放量: 99.9万</p>
 								<p class="comment">评论</p>
 							</div>
-							
+
 						</div>
 					</li>
 					<li>
@@ -180,7 +176,7 @@
 								<p class="play">播放量: 99.9万</p>
 								<p class="comment">评论</p>
 							</div>
-							
+
 						</div>
 					</li>
 					<li>
@@ -194,7 +190,7 @@
 								<p class="play">播放量: 99.9万</p>
 								<p class="comment">评论</p>
 							</div>
-							
+
 						</div>
 					</li>
 					<li>
@@ -208,7 +204,7 @@
 								<p class="play">播放量: 99.9万</p>
 								<p class="comment">评论</p>
 							</div>
-							
+
 						</div>
 					</li>
 					<li>
@@ -222,7 +218,7 @@
 								<p class="play">播放量: 99.9万</p>
 								<p class="comment">评论</p>
 							</div>
-							
+
 						</div>
 					</li>
 					<li>
@@ -236,7 +232,7 @@
 								<p class="play">播放量: 99.9万</p>
 								<p class="comment">评论</p>
 							</div>
-							
+
 						</div>
 					</li>
 					<li>
@@ -250,7 +246,7 @@
 								<p class="play">播放量: 99.9万</p>
 								<p class="comment">评论</p>
 							</div>
-							
+
 						</div>
 					</li>
 					<li>
@@ -332,7 +328,7 @@
 								<p class="play">播放量: 99.9万</p>
 								<p class="comment">评论</p>
 							</div>
-							
+
 						</div>
 					</li>
 					<li>
@@ -346,7 +342,7 @@
 								<p class="play">播放量: 99.9万</p>
 								<p class="comment">评论</p>
 							</div>
-							
+
 						</div>
 					</li>
 					<li>
@@ -360,7 +356,7 @@
 								<p class="play">播放量: 99.9万</p>
 								<p class="comment">评论</p>
 							</div>
-							
+
 						</div>
 					</li>
 					<li>
@@ -374,7 +370,7 @@
 								<p class="play">播放量: 99.9万</p>
 								<p class="comment">评论</p>
 							</div>
-							
+
 						</div>
 					</li>
 					<li>
@@ -388,7 +384,7 @@
 								<p class="play">播放量: 99.9万</p>
 								<p class="comment">评论</p>
 							</div>
-							
+
 						</div>
 					</li>
 					<li>
@@ -402,7 +398,7 @@
 								<p class="play">播放量: 99.9万</p>
 								<p class="comment">评论</p>
 							</div>
-							
+
 						</div>
 					</li>
 					<li>
@@ -416,7 +412,7 @@
 								<p class="play">播放量: 99.9万</p>
 								<p class="comment">评论</p>
 							</div>
-							
+
 						</div>
 					</li>
 					<li>
@@ -430,7 +426,7 @@
 								<p class="play">播放量: 99.9万</p>
 								<p class="comment">评论</p>
 							</div>
-							
+
 						</div>
 					</li>
 					<li>
@@ -493,13 +489,20 @@
 					<h2 class="title fl"><a id="drama">番剧</a></h2>
 					<!-- <span class="fl active">周一</span> -->
 					<div class="week">
-						<div name="time">周一<p name="timeTriangle"></p></div>
-						<div name="time">周二<p name="timeTriangle"></p></div>
-						<div name="time">周三<p name="timeTriangle"></p></div>
-						<div name="time">周四<p name="timeTriangle"></p></div>
-						<div name="time">周五<p name="timeTriangle"></p></div>
-						<div name="time">周六<p name="timeTriangle"></p></div>
-						<div name="time">周日<p name="timeTriangle"></p></div>
+						<div name="time">周一<p name="timeTriangle"></p>
+						</div>
+						<div name="time">周二<p name="timeTriangle"></p>
+						</div>
+						<div name="time">周三<p name="timeTriangle"></p>
+						</div>
+						<div name="time">周四<p name="timeTriangle"></p>
+						</div>
+						<div name="time">周五<p name="timeTriangle"></p>
+						</div>
+						<div name="time">周六<p name="timeTriangle"></p>
+						</div>
+						<div name="time">周日<p name="timeTriangle"></p>
+						</div>
 						<button class="btn1" id="button">换一天</button>
 					</div>
 					<!-- 周一 -->
@@ -916,7 +919,7 @@
 								<p class="play">播放量: 99.9万</p>
 								<p class="comment">评论</p>
 							</div>
-							
+
 						</div>
 					</li>
 					<li>
@@ -930,7 +933,7 @@
 								<p class="play">播放量: 99.9万</p>
 								<p class="comment">评论</p>
 							</div>
-							
+
 						</div>
 					</li>
 					<li>
@@ -944,7 +947,7 @@
 								<p class="play">播放量: 99.9万</p>
 								<p class="comment">评论</p>
 							</div>
-							
+
 						</div>
 					</li>
 					<li>
@@ -958,7 +961,7 @@
 								<p class="play">播放量: 99.9万</p>
 								<p class="comment">评论</p>
 							</div>
-							
+
 						</div>
 					</li>
 					<li>
@@ -972,7 +975,7 @@
 								<p class="play">播放量: 99.9万</p>
 								<p class="comment">评论</p>
 							</div>
-							
+
 						</div>
 					</li>
 					<li>
@@ -986,7 +989,7 @@
 								<p class="play">播放量: 99.9万</p>
 								<p class="comment">评论</p>
 							</div>
-							
+
 						</div>
 					</li>
 					<li>
@@ -1000,7 +1003,7 @@
 								<p class="play">播放量: 99.9万</p>
 								<p class="comment">评论</p>
 							</div>
-							
+
 						</div>
 					</li>
 					<li>
@@ -1014,7 +1017,7 @@
 								<p class="play">播放量: 99.9万</p>
 								<p class="comment">评论</p>
 							</div>
-							
+
 						</div>
 					</li>
 					<li>
@@ -1096,7 +1099,7 @@
 								<p class="play">播放量: 99.9万</p>
 								<p class="comment">评论</p>
 							</div>
-							
+
 						</div>
 					</li>
 					<li>
@@ -1110,7 +1113,7 @@
 								<p class="play">播放量: 99.9万</p>
 								<p class="comment">评论</p>
 							</div>
-							
+
 						</div>
 					</li>
 					<li>
@@ -1124,7 +1127,7 @@
 								<p class="play">播放量: 99.9万</p>
 								<p class="comment">评论</p>
 							</div>
-							
+
 						</div>
 					</li>
 					<li>
@@ -1138,7 +1141,7 @@
 								<p class="play">播放量: 99.9万</p>
 								<p class="comment">评论</p>
 							</div>
-							
+
 						</div>
 					</li>
 					<li>
@@ -1152,7 +1155,7 @@
 								<p class="play">播放量: 99.9万</p>
 								<p class="comment">评论</p>
 							</div>
-							
+
 						</div>
 					</li>
 					<li>
@@ -1166,7 +1169,7 @@
 								<p class="play">播放量: 99.9万</p>
 								<p class="comment">评论</p>
 							</div>
-							
+
 						</div>
 					</li>
 					<li>
@@ -1180,7 +1183,7 @@
 								<p class="play">播放量: 99.9万</p>
 								<p class="comment">评论</p>
 							</div>
-							
+
 						</div>
 					</li>
 					<li>
@@ -1194,7 +1197,7 @@
 								<p class="play">播放量: 99.9万</p>
 								<p class="comment">评论</p>
 							</div>
-							
+
 						</div>
 					</li>
 					<li>
@@ -1276,7 +1279,7 @@
 								<p class="play">播放量: 99.9万</p>
 								<p class="comment">评论</p>
 							</div>
-							
+
 						</div>
 					</li>
 					<li>
@@ -1290,7 +1293,7 @@
 								<p class="play">播放量: 99.9万</p>
 								<p class="comment">评论</p>
 							</div>
-							
+
 						</div>
 					</li>
 					<li>
@@ -1304,7 +1307,7 @@
 								<p class="play">播放量: 99.9万</p>
 								<p class="comment">评论</p>
 							</div>
-							
+
 						</div>
 					</li>
 					<li>
@@ -1318,7 +1321,7 @@
 								<p class="play">播放量: 99.9万</p>
 								<p class="comment">评论</p>
 							</div>
-							
+
 						</div>
 					</li>
 					<li>
@@ -1332,7 +1335,7 @@
 								<p class="play">播放量: 99.9万</p>
 								<p class="comment">评论</p>
 							</div>
-							
+
 						</div>
 					</li>
 					<li>
@@ -1346,7 +1349,7 @@
 								<p class="play">播放量: 99.9万</p>
 								<p class="comment">评论</p>
 							</div>
-							
+
 						</div>
 					</li>
 					<li>
@@ -1360,7 +1363,7 @@
 								<p class="play">播放量: 99.9万</p>
 								<p class="comment">评论</p>
 							</div>
-							
+
 						</div>
 					</li>
 					<li>
@@ -1374,7 +1377,7 @@
 								<p class="play">播放量: 99.9万</p>
 								<p class="comment">评论</p>
 							</div>
-							
+
 						</div>
 					</li>
 					<li>
@@ -1456,7 +1459,7 @@
 								<p class="play">播放量: 99.9万</p>
 								<p class="comment">评论</p>
 							</div>
-							
+
 						</div>
 					</li>
 					<li>
@@ -1470,7 +1473,7 @@
 								<p class="play">播放量: 99.9万</p>
 								<p class="comment">评论</p>
 							</div>
-							
+
 						</div>
 					</li>
 					<li>
@@ -1484,7 +1487,7 @@
 								<p class="play">播放量: 99.9万</p>
 								<p class="comment">评论</p>
 							</div>
-							
+
 						</div>
 					</li>
 					<li>
@@ -1498,7 +1501,7 @@
 								<p class="play">播放量: 99.9万</p>
 								<p class="comment">评论</p>
 							</div>
-							
+
 						</div>
 					</li>
 					<li>
@@ -1512,7 +1515,7 @@
 								<p class="play">播放量: 99.9万</p>
 								<p class="comment">评论</p>
 							</div>
-							
+
 						</div>
 					</li>
 					<li>
@@ -1526,7 +1529,7 @@
 								<p class="play">播放量: 99.9万</p>
 								<p class="comment">评论</p>
 							</div>
-							
+
 						</div>
 					</li>
 					<li>
@@ -1540,7 +1543,7 @@
 								<p class="play">播放量: 99.9万</p>
 								<p class="comment">评论</p>
 							</div>
-							
+
 						</div>
 					</li>
 					<li>
@@ -1554,7 +1557,7 @@
 								<p class="play">播放量: 99.9万</p>
 								<p class="comment">评论</p>
 							</div>
-							
+
 						</div>
 					</li>
 					<li>
@@ -1614,45 +1617,46 @@
 	{{ include './footer.html' }}
 
 	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.2/js/swiper.min.js"></script> -->
-	
+	<script src="/public/js/customLoop.js"></script>
 	<script>
-		var mySwiper = new Swiper ('.swiper-container', {
-		    direction: 'horizontal',
-		    loop: true,
-		    autoplay: {
-			    delay: 2000,
-			    stopOnLastSlide: false,
-			    disableOnInteraction: true,
-		    },
-		    pagination: {
-		      el: '.swiper-pagination',
-		    }
-		  })  	
+		var mySwiper = new Swiper('.swiper-container', {
+			direction: 'horizontal',
+			loop: true,
+			autoplay: {
+				delay: 2000,
+				stopOnLastSlide: false,
+				disableOnInteraction: true,
+			},
+			pagination: {
+				el: '.swiper-pagination',
+			}
+		})
 	</script>
 
 	<script>
-		var i=0,j=0,h=0,x=0;
-		document.getElementById('button').onclick=function(){
-			var a=document.getElementsByName('time'),l=a.length;
-			a[i++].style.borderBottomColor='transparent';
-			if(i>=l)i=0;
-			a[i].style.borderBottomColor='#00a1d6';
-			
-			var b=document.getElementsByName('time'),l=b.length;
-			b[j++].style.color='#000';
-			if(j>=l)j=0;
-			b[j].style.color='#00a1d6';
-			
-			var c=document.getElementsByName('timeTriangle'),l=c.length;
-				c[h++].style.display='none';
-				if(h>=l)h=0;
-				c[h].style.display='block';
+		var i = 0, j = 0, h = 0, x = 0;
+		document.getElementById('button').onclick = function () {
+			var a = document.getElementsByName('time'), l = a.length;
+			a[i++].style.borderBottomColor = 'transparent';
+			if (i >= l) i = 0;
+			a[i].style.borderBottomColor = '#00a1d6';
 
-			var d=document.getElementsByName('timeTab'),l=d.length;
-				d[x++].style.display='none';
-				if(x>=l)x=0;
-				d[x].style.display='block';
+			var b = document.getElementsByName('time'), l = b.length;
+			b[j++].style.color = '#000';
+			if (j >= l) j = 0;
+			b[j].style.color = '#00a1d6';
+
+			var c = document.getElementsByName('timeTriangle'), l = c.length;
+			c[h++].style.display = 'none';
+			if (h >= l) h = 0;
+			c[h].style.display = 'block';
+
+			var d = document.getElementsByName('timeTab'), l = d.length;
+			d[x++].style.display = 'none';
+			if (x >= l) x = 0;
+			d[x].style.display = 'block';
 		}
 	</script>
 </body>
+
 </html>

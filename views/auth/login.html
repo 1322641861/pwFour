@@ -53,25 +53,21 @@
 
 	{{ include '../footer.html' }}
 	
-	<!-- <script src="/public/js/ajax.js"></script> -->
-	<!-- <script src="/public/js/api.js"></script> -->
-	<script>
+	<script type='module'>
+		import { API } from '/public/js/api.js';
 		$('form').on('submit', (e) => {
 			e.preventDefault();
 			const formData = $('form').serialize();
 			let data = ajaxTools.formatPostStrParams(decodeURI(formData));
-			ajaxTools.post(loginApi,
+			ajaxTools.post(API.loginApi,
 				data,
 				(value) => {
 					const status = value.status;
+					localStorage.setItem('logined_token', value.token);
 					if (status === 0) {
 						window.alert('登录成功');
-						localStorage.setItem('isLogin', true);
 						window.location.href = '/index';
 					} else if (status === 1) {
-						// $('#valid-tip')
-						// 	.addClass('valid-tip')
-						// 	.append(value.msg);
 						window.alert(value.msg);
 					} else if (status === 500) {
 						window.alert('操作失败, 请稍后重试');

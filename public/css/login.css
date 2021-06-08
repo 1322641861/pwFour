@@ -5,7 +5,6 @@ body{
 }
 #header{
 	position: relative;
-	/* z-index: 20; */
 	width: 100%;
 	height: 131px;
 	background-color: #00a0d8;
@@ -405,12 +404,21 @@ body{
 	
 }
 
+#header .login-bar .avatar-border {
+	overflow: hidden;
+    background-color: #f3f3f3;
+    width: 36px;
+    height: 36px;
+    display: inline-block;
+    border-radius: 36px;
+    vertical-align: middle;
+}
+
 #header .login-bar .login-head{
 	display: inline-block;
 	width: 36px;
 	height: 36px;
 	border-radius: 50%;
-	vertical-align: middle;
 }
 
 #header .login-bar .login-more{
@@ -468,8 +476,7 @@ body{
 		width: 100%;
 		height: 131px;
 		top: 20px;
-		background: url("../../image/nav_img/1.png") no-repeat center 25px;
-		/* z-index: 60px; */
+		background: url("/public/images/header/nav_img/1.png") no-repeat center 25px;
 	}
 
 /* login start*/
@@ -613,10 +620,11 @@ body{
 #footer{
 	height: 325px;
 	background-color: #f6f9fa;
+	margin-top: 30px;
 }
 #footer .content{
 	position: relative;
-	z-index: 100;
+	z-index: 1;
 	width: 1161px;
 	height: 100%;
 	margin: 0 auto;

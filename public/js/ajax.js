@@ -1,4 +1,4 @@
-
+let loginedToken = localStorage.getItem('logined_token');
 const ajaxTools = {
     get: (url, body, callback) => {
         let bodyStr = typeof body === String 
@@ -16,6 +16,8 @@ const ajaxTools = {
         // 2. 建立连接, 通过open方法跟后台交互
         // 三个参数: 1. 发送方式 2.地址 3.是否异步
         xhr.open('GET', url + bodyStr, true)
+        xhr.setRequestHeader('token', `${loginedToken}`)
+
         // 3. 请求需求正式发送
         xhr.send(null)
 
@@ -43,7 +45,7 @@ const ajaxTools = {
                 if (xhr.status === 200) {
                     // 接受后端send回来的数据
                     let resText = xhr.responseText;
-                    if (typeof resText === 'string' && resText.indexOf('{') >= 0) {
+                    if (typeof resText === 'string' && resText.indexOf('{') >= 0 && resText.indexOf('<html>')<0) {
                         resText = JSON.parse(xhr.responseText);
                     }
                     callback(resText);
@@ -56,12 +58,13 @@ const ajaxTools = {
         if (setHeader) {
             for (let key in setHeader) {
                 xhr.setRequestHeader(key, setHeader[key])
+                xhr.setRequestHeader('token', `${loginedToken}`)
             }
         } else {
             // xhr.setRequestHeader('Content-Type',"application/x-www-form-urlencoded")
             xhr.setRequestHeader('Content-type', 'multipart/form-data')
             // xhr.setRequestHeader('Content-type', 'image/*')
-            xhr.setRequestHeader('Authorization', '')
+            xhr.setRequestHeader('token', `${loginedToken}`)
         }
         xhr.send(formData)
     },

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!--存放网页提供给搜索引擎的信息-->
+    <!-- <link href="/node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">  -->
+    {{include '../head.html'}}
+    <link rel="stylesheet" type="text/css" href="/public/css/login.css">
+    <link rel="stylesheet" type="text/css" href="/public/css/account.css">
+    <link rel="stylesheet" href="/node_modules/layui-laydate/dist/theme/default/laydate.css">
+    <style></style>
+</head>
+
+<body>
+    <header id="header">
+        <div class="whitebgl"></div>
+        {{include '../nav_menu.html'}}
+    </header>
+
+    <div class="user-wrap">
+        <div class="user">
+            <div class="nav">
+                <div class="mine">个人中心</div>
+                <ul class="nav-ul">
+                    <li onclick="navLiChecked(0)">
+                        <i class='icon-0'></i>
+                        <span>首页</span>
+                    </li>
+                    <li onclick="navLiChecked(1)">
+                        <i class='icon-1'></i>
+                        <span>我的信息</span>
+                    </li>
+                    <li onclick="navLiChecked(2)">
+                        <i class='icon-2'></i>
+                        <span>我的头像</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="content">
+                {{include './setting.html'}}
+            </div>
+        </div>
+    </div>
+
+    {{ include '../footer.html' }}
+    <script src="/node_modules/layui-laydate/dist/laydate.js"></script>
+    <script type="module">
+        import { API } from '/public/js/api.js';
+        // 常规用法
+        laydate.render({elem: '#birthday'});
+
+        let sexInputChecked = $('.set-line input[name="sex"]')
+        let sexChecked = $('.set-sex')[0]
+        let birthdayStr = $('.hidden-birthday').text();
+        
+        // 初始化加载性别
+        sexInputChecked.each((index, item) => {
+            if (item.value === sexChecked.dataset.sex) {
+                item.checked = true;
+            }
+        })
+        // 初始化加载日历
+        if (birthdayStr) {
+            laydate.render({
+                elem: '#birthday'
+                , value: birthdayStr
+                , isInitValue: true //是否允许填充初始值，默认为 true
+            });
+        }
+       
+        $('form').on('submit', (e) => {
+            e.preventDefault();
+            const formData = $('form').serialize();
+			let data = ajaxTools.formatPostStrParams(decodeURI(formData));
+            ajaxTools.post(API.setsUpdateApi,
+                data,
+                (value) => {
+                    console.log('setsUpdateApi ==>', value)
+                },
+                { 'Content-type': 'application/json' }
+            )
+        })
+
+    </script>
+    <script>
+        let navLi = $('.nav-ul li');
+        let pathname = window.location.pathname;
+        let navList = ['/home', '/setting', '/avatar']
+
+        // 初始化加载导航栏
+        if (pathname.indexOf('/setting') >= 0) {
+            navLi[1].className = 'nav-checked';
+        } else if (pathname.indexOf('/home') >= 0) {
+            navLi[0].className = 'nav-checked';
+        } else if (pathname.indexOf('/avatar') >= 0) {
+            navLi[2].className = 'nav-checked';
+        }
+
+        function navLiChecked(i) {
+            if (navLi[i].className === 'nav-checked') return;
+            window.location.href = `/account${navList[i]}`
+        }
+    </script>
+</body>
+
+</html>

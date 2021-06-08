@@ -1,6 +1,9 @@
 var BiBoNiu = require('../effect')
 var User = require('../models/user')
 var md5 = require('blueimp-md5')
+var fs = require('fs')
+var path = require('path')
+var jwt = require('jsonwebtoken')
 
 const getTitleName = (path) => {
     const temp = 'pwFour动漫网站-您没看错,什么都没有(╥╯^╰╥)'
@@ -16,6 +19,12 @@ const getTitleName = (path) => {
         'registered': `${temp}`,
     }
     return TITLE_NAME[path.split('/')[1]]
+}
+const _getToken = (user) => {
+     // token 
+     var privateKey = fs.readFileSync(path.join(__dirname, '../public/assets/keys/private_key.pem'));
+     var token = jwt.sign(user.toJSON(), privateKey, { algorithm: 'RS256'}, {expiresIn: "60"});
+     return token;
 }
 
 const getLogin = (req, res) => {
@@ -72,11 +81,17 @@ const postRegister =  async (req, res) => {
         // 对密码进行 md5 重复加密
         body.password = md5(md5(body.password))
         let user = await new User(body).save()
+
         // 注册成功, 使用session记录用户登录状态
         req.session.user = user
+
+        // token 
+        token = _getToken(user)
+
         res.status(200).send({
             status: 0,
-            msg: '注册成功'
+            msg: '注册成功',
+            token: token
         })
     } catch (error) {
         res.status(500).send({
@@ -109,9 +124,13 @@ const postLogin =  async (req, res) => {
 
         // 注册成功, 使用session记录用户登录状态
         req.session.user = user
+        // token 
+        token = _getToken(user)
+
         res.status(200).send({
             status: 0,
-            msg: '登录成功'
+            msg: '登录成功',
+            token: token
         })
     } catch (error) {
         res.status(500).send({
@@ -126,3 +145,4 @@ exports.getRegister = getRegister
 exports.getLogout = getLogout
 exports.postLogin = postLogin
 exports.postRegister = postRegister
+exports.getTitleName = getTitleName

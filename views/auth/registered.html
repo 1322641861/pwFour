@@ -71,10 +71,9 @@
 
 	{{ include '../footer.html' }}
 	<script src="/node_modules/jquery/dist/jquery.js"></script>
-	<script src="/public/js/ajax.js"></script>
-	<script src="/public/js/api.js"></script>
 	<script src="/node_modules/jsencrypt/bin/jsencrypt.min.js"></script>
-	<script>
+	<script type='module'>
+		import { API } from '/public/js/api.js';
 		const checkboxChecked = document.querySelector('.checked');
 		let pwdStr = '';
 		$('#register-name').on('submit', (e) => {
@@ -83,7 +82,7 @@
 			if (pwdStr) return;
 			if (checkboxChecked.checked) {
 				let data = ajaxTools.formatPostStrParams(decodeURI(formData));
-				ajaxTools.post(registerApi,
+				ajaxTools.post(API.registerApi,
 					data,
 					(value) => {
 						const status = value.status;

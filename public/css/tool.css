@@ -36,7 +36,6 @@
     padding: 8px 0;
     display: flex;
     justify-content: space-evenly;
-    margin-bottom: 10px;
 }
 .user-fens-wrap .user-fens {
     color: #000;
@@ -47,6 +46,27 @@
     display: block;
     color: #999;
     line-height: 18px;
+}
+.user-sets li {
+    margin: 4px 0;
+    text-align: left;
+    color: #333;
+    cursor: pointer;
+}
+.user-sets li a {
+    display: block;
+    padding: 3px 10px;
+}
+.user-sets li:hover {
+    transition: .2s;
+    background: #eee;
+}
+.user-sets li i {
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    vertical-align: middle;
+    background: url(/public/images/icons.png) -467px -401px/1600px;
 }
 #header div.login-more>input {
     width: 310px;
@@ -104,3 +124,73 @@
     cursor: pointer;
     color: #48b8f5;
 }
+
+/* custom loop */
+.content>.border {
+    display: inline-block;
+    width: 440px;
+    height: 220px;
+    overflow: hidden;
+}
+.border .clearfix {
+    width: 880px;
+}
+.border .clearfix .item {
+    float: left;
+}
+.border .clearfix .item:hover {
+    cursor: pointer;
+}
+/* custom loop */
+
+/* 全局按钮样式 */
+.default-btn {
+    height: 34px;
+    background-color: #00aed6;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 0px 36px;
+}
+.error-btn {
+    height: 34px;
+    background-color: #f34317;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 0px 36px;
+}
+.warning-btn {
+    height: 34px;
+    background-color: #e0a607;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 0px 36px;
+}
+/* 全局按钮样式 */
+
+/* 仿bootstrap input 样式 */
+.form-control {
+    display: block;
+    width: 100%;
+    /* height: 34px; */
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%);
+    box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%);
+    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+.form-control:focus {
+    outline: 0;
+    border-color: #20a0ff;
+}
+/* 仿bootstrap input 样式 */

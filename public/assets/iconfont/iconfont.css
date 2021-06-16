@@ -1,0 +1,79 @@
+@font-face {
+  font-family: "pwFour"; /* Project id 2605409 */
+  src: url('iconfont.woff2?t=1623396314828') format('woff2'),
+       url('iconfont.woff?t=1623396314828') format('woff'),
+       url('iconfont.ttf?t=1623396314828') format('truetype');
+}
+
+.pwFour {
+  font-family: "pwFour" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-Stop:before {
+  content: "\e60a";
+}
+
+.icon-face:before {
+  content: "\e6ae";
+}
+
+.icon-tags:before {
+  content: "\e673";
+}
+
+.icon-edit:before {
+  content: "\e617";
+}
+
+.icon-zan:before {
+  content: "\e61b";
+}
+
+.icon-cai:before {
+  content: "\e61c";
+}
+
+.icon-dashang:before {
+  content: "\e672";
+}
+
+.icon-share:before {
+  content: "\e682";
+}
+
+.icon-like-fill:before {
+  content: "\eb54";
+}
+
+.icon-shoucang:before {
+  content: "\e629";
+}
+
+.icon-top:before {
+  content: "\e605";
+}
+
+.icon-kefu:before {
+  content: "\e606";
+}
+
+.icon-add:before {
+  content: "\e627";
+}
+
+.icon-email:before {
+  content: "\e641";
+}
+
+.icon-xinxi:before {
+  content: "\e64e";
+}
+
+.icon-more:before {
+  content: "\e7fb";
+}
+

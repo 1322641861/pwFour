@@ -34,6 +34,13 @@ app.use(session({
 
 // 使用路由管理, 把路由挂载到app中
 // app.use(express.Router())
+// 设置跨域访问  
+app.all('*', function(req, res, next) {  
+    res.header("Access-Control-Allow-Origin", "*");  
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");  
+    res.header("Access-Control-Allow-Methods","PUT,POST,GET,DELETE,OPTIONS");  
+    next();  
+});  
 app.use(router)
 app.use(get404Page)
 

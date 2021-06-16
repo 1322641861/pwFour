@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!--存放网页提供给搜索引擎的信息-->
+    <!-- <link href="/node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">  -->
+    {{include '../head.html'}}
+    <link rel="stylesheet" type="text/css" href="/public/css/video.css">
+    <link rel="stylesheet" type="text/css" href="/public/css/account.css">
+    <link rel="stylesheet" crossorigin="anonymous" preload="auto"
+        href="/node_modules/layui-laydate/dist/theme/default/laydate.css">
+    <link rel="stylesheet" href="/public/assets/iconfont/iconfont.css">
+    <style></style>
+</head>
+
+<body>
+    <header id="video-header">
+        {{include '../nav_menu.html'}}
+        </div>
+    </header>
+    <div class="v-wrap">
+        <div class="l-con">
+            <div class="l-title">
+                <h1 class="v-title">
+                    <a title="让大家了解你最爱的偶像吧，一起为TA打CALL！">活动作品</a>
+                    <span>【宵鱼】《HIP》超A的狙击！为自己的潇洒欢呼吧！</span>
+                </h1>
+                <div>
+                    <span title="总播放数568981" class="view">56.9万播放&nbsp;·&nbsp;</span>
+                    <span title="历史累计弹幕数328" class="dm">328弹幕</span>
+                    2020-04-10 20:23:26
+                </div>
+            </div>
+            <div id="video-wrap" class="video-wrap">
+                <video class="" controls src="/public/videos/dance/113284555-1-208.mp4">
+                    您的浏览器不支持Video标签。
+                </video>
+            </div>
+            <div class="video-toolbar">
+                <div class="ops">
+                    <a>
+                        <i class="pwFour icon-like-fill"></i>
+                        <span>6927</span>
+                    </a>
+                    <a>
+                        <i class="pwFour icon-dashang"></i>
+                        <span>2933</span>
+                    </a>
+                    <a>
+                        <i class="pwFour icon-shoucang"></i>
+                        <span>1.3万</span>
+                    </a>
+                    <a>
+                        <i class="pwFour icon-share"></i>
+                        <span>1289</span>
+                    </a>
+                </div>
+                <div class="r-ops">
+                    <div class="appeal">稿件投诉</div>
+                    <div class="note">
+                        <i class="pwFour icon-edit"></i>
+                        <span>记笔记</span>
+                    </div>
+                    <div class="more">
+                        <i class="pwFour icon-more"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="video-desc">
+                <div class="not-share">
+                    <i class="pwFour icon-Stop"></i>
+                    <span>未经作者授权，禁止转载</span>
+                </div>
+                <div class="video-desc-text">
+                    <span>
+                        歌/舞-Sistar-Alone
+                        摄影-华为P30pro
+                        后期-老慕慕/小安逸
+                    </span>
+                </div>
+                <a class="view-more">展开更多</a>
+            </div>
+            <div class="v-tag">
+                <ul>
+                    <li>
+                        <i class="pwFour icon-tags"></i>
+                        明星舞蹈
+                    </li>
+                    <li> 舞蹈</li>
+                    <li> 韩舞翻跳</li>
+                    <li> GETIT</li>
+                </ul>
+            </div>
+            <a class="v-adv">
+                <img src="/public/images/adv/adv2.jpg" alt="">
+            </a>
+            <!-- 评论 -->
+            <div class="comment">
+                <div class="c-head">202 评论</div>
+                <div id="comment">
+                    <div class="c-nav">
+                        <ul>
+                            <li class="comment-on">按热度排序</li>
+                            <li>按时间排序</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- 发表 -->
+                <div class="c-send">
+                    <img class="user-head" src='' alt="">
+                    <div class="r-send">
+                        <div class="ipt-send">
+                            <textarea cols="80" name="msg" rows="5" placeholder="发一条友善的评论" class="ipt-txt"></textarea>
+                            <button type="submit" class="comment-submit">发表评论</button>
+                        </div>
+                        <div class="c-emoji">
+                            <i class="pwFour icon-face"></i>
+                            <span>表情</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- 用户评论 -->
+                <div class="all-comment">
+                    <ul>
+                        <li class="person-comment">
+                            <div class="passerby">
+                                <a><img src="" alt=""> </a>
+                            </div>
+                            <div class="passerby-w">
+                                <div class="p-user">
+                                    <span>阿委Warren</span>
+                                    <i></i>
+                                    <span class="is-up">
+                                        <span> UP </span>
+                                    </span>
+                                </div>
+                                <p class="p-message">告诉我你最喜欢几号的音乐</p>
+                                <div class="p-approval">
+                                    <span class="leave-time">2021-06-13</span>
+                                    <a class="like">
+                                        <i></i>
+                                        <span>8</span>
+                                    </a>
+                                    <a class="dislike">
+                                        <i></i>
+                                        <span>1</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="load-all">
+                        已加载全部
+                    </div>
+                </div>
+                <!-- 底部评论框 -->
+                <div class="comment-send-lite">
+                    <div class="ipt-send-lite">
+                        <textarea cols="80" name="msg" rows="5" placeholder="发一条友善的评论" class="ipt-txt" style="height: 36px;"></textarea>
+                        <button type="submit" class="comment-submit">发表评论</button>
+                    </div>
+                    <div class="c-emoji-lite c-emoji">
+                        <i class="pwFour icon-face"></i>
+                        <span>表情</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="r-con">
+            <div class="r-title">
+                <div class="author-img">
+                    <img src="/public/images/advertise/advertise3.webp" alt="">
+                </div>
+                <div class="author-info">
+                    <div class="author-info-name">
+                        <a>Warren</a>
+                        <a class="send">
+                            <i class="pwFour icon-email"></i>
+                            <span>发消息</span>
+                        </a>
+                    </div>
+                    <div class="author-info-des" title="新投稿号：宵鱼鱼 感谢关注 群：487739430">
+                        新投稿号：宵鱼鱼 感谢关注 群：487739430
+                    </div>
+                    <div class="btn-line">
+                        <div>为TA充电</div>
+                        <div>
+                            <i class="pwFour icon-add"></i>
+                            <span>关注 13.0万</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="barrage">
+                <div class="barrage-nav">
+                    <div class="barrage-title">
+                        <p>弹幕列表</p>
+                        <i class="pwFour icon-more"></i>
+                    </div>
+                    <a>展开</a>
+                </div>
+                <ul>
+                    <li></li>
+                </ul>
+            </div>
+            <!-- 广告1 -->
+            <div class="advertise">
+                <img src="/public/images/advertise/advertise.jpg">
+            </div>
+            <!-- 更多视频 -->
+            <div class="more-video">
+                <ul></ul>
+            </div>
+            <!-- 广告2 -->
+            <div class="advertise">
+                <img src="/public/images/advertise/advertise1.jpg">
+                <span>探索挖掘游戏中的知识点</span>
+            </div>
+            <!-- 推荐直播 -->
+            <div class="video-live">
+                <h3>大家围观的直播</h3>
+                <div class="live-wrap">
+                    <div class="live-img">
+                        <img src="/public/images/advertise/advertise1.webp" alt="">
+                        <div class="live-img-hover">
+                            <span></span>
+                            <span>LVIE</span>
+                        </div>
+                    </div>
+                    <div class="live-text">
+                        <div class="live-text-img">
+                            <img src="/public/images/advertise/advertise2.webp" alt="">
+                        </div>
+                        <div class="live-title">
+                            <p>【钢琴弹唱】林俊杰铁粉！努力56船</p>
+                            <div class="live-author">
+                                <div class="live-name">
+                                    <i></i>
+                                    <span>Warren</span>
+                                </div>
+                                <div class="live-view">
+                                    <i></i>
+                                    <span>10923</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="float-nav">
+        <div class="item to-top">
+            <i class="pwFour icon-top"></i>
+        </div>
+        <div class='item open'>
+            <span>mini</span>
+            <span>ON</span>
+        </div>
+        <div class='item kefu'>
+            <i class="pwFour icon-kefu"></i>
+        </div>
+    </div>
+
+    {{ include '../footer.html' }}
+    <!-- <script>
+            var myVideo = document.getElementById("video1");
+
+            function playPause() {
+                myVideo.paused ? myVideo.play() : myVideo.pause();
+            }
+
+            function makeBig() {
+                myVideo.width = 560;
+            }
+
+            function makeSmall() {
+                myVideo.width = 320;
+            }
+
+            function makeNormal() {
+                myVideo.width = 420;
+            }
+        </script> -->
+    <script>
+        let video = $("video");
+        let floatNav = $('.float-nav')[0];
+        let toTop = $('.to-top')[0];
+        let open = $('.open')[0];
+        let kefu = $('.kefu')[0];
+        let openText = $('.open span:last-child')[0];
+        let videoDesc = $('.video-desc-text')[0];
+        let videoDescMore = $('.video-desc-text span')[0];
+        let viewMore = $('.view-more')[0];
+        let sendLite = $('.comment-send-lite')[0];
+        let iptText = $('.ipt-send-lite .ipt-txt')[0];
+        let commentSubmit = $('.ipt-send-lite .comment-submit')[0];
+
+        video.prop("volume", 0.2);
+
+        if (videoDescMore.offsetHeight > videoDesc.offsetHeight) {
+            viewMore.style.display = 'block';
+        } else {
+            viewMore.style.display = 'none';
+        }
+        // 视频描述
+        viewMore.onclick = function() {
+            if (viewMore.innerHTML === '展开更多') {
+                viewMore.innerHTML = '收起';
+                videoDesc.style.height = videoDescMore.offsetHeight + 30 + 'px';
+            } else {
+                viewMore.innerHTML = '展开更多';
+                videoDesc.style.height = '63px';
+            }
+        }
+
+        open.onclick = function() {
+            openText.innerText = openText.innerText === 'ON' ? 'OFF' : 'ON';
+        }
+        
+        /*
+        回到顶部 && 底部评论框
+        */
+        let opacity = 0;
+        sendOpacity = function(flag) {
+            return function() {
+                if (flag) {
+                    sendLite.style.display = 'block';
+                    if (opacity < 1 && opacity >= 0) {
+                        opacity += .12;
+                        sendLite.style.opacity = opacity
+                        requestAnimationFrame(sendOpacity(true))
+                    } else {
+                        opacity = 1
+                        sendLite.style.opacity = opacity
+                    }
+                } else {
+                    if (opacity <= 1 && opacity > 0) {
+                        opacity -= .12;
+                        sendLite.style.opacity = opacity
+                        requestAnimationFrame(sendOpacity(false))
+                    } else {
+                        opacity = 0;
+                        sendLite.style.opacity = opacity;
+                        sendLite.style.display = 'none';
+                    }
+                }
+            }
+        }
+        
+        window.onscroll = function () {
+            if (document.documentElement.scrollTop > 700) { // 滚动了一段位移才显示
+                floatNav.style.display = 'block';
+            } else {
+                floatNav.style.display = "none";
+            }
+
+            if (document.documentElement.scrollTop > 1550) {
+                sendOpacity(true)();
+            } else {
+                sendOpacity(false)();
+            }
+        }
+        // 回到顶部
+        toTop.onclick = function() {	// 绑定事件
+            function move() { // 动画运行中函数
+                if(document.documentElement.scrollTop>0){
+                    document.documentElement.scrollTop *= 0.93; // 先快后慢的过渡
+                    requestAnimationFrame(move);
+                }
+            }
+            requestAnimationFrame(move);
+        }
+        // 底部评论框
+        iptText.onblur = function() {
+            if (iptText.style.height === '72px') {
+                commentSubmit.style.height = 
+                iptText.style.height = '36px';
+            }
+        }
+        iptText.onfocus = function() {
+            if (iptText.style.height === '36px') {
+                commentSubmit.style.height = 
+                iptText.style.height = '72px';
+            }
+        } 
+    </script>
+    <script>
+        let moreVideo = $('.more-video ul');
+        let videoLi = '';
+        for (let i = 1; i < 20; i++) {
+            videoLi += `<li class="videos-li">
+                        <div class="videos-img">
+                            <a>
+                                <img src="/public/images/dance/${(i % 6) + 1}.png" alt="">
+                            </a>
+                            <div class="img-hover">
+                                <span>1:48</span>
+                                <i></i>
+                            </div>
+                        </div>
+                        <div class="videos-text">
+                            <a class="videos-title" title="【抗糖化V】学猫叫【你的软萌粉喵~】">
+                                【抗糖化V】学猫叫【你的软萌粉喵~】
+                            </a>
+                            <div class="videos-author">
+                                <a target="_blank">_糖小V_</a>
+                            </div>
+                            <div class="videos-msg">191.2万&nbsp;播放&nbsp;·&nbsp;988&nbsp;弹幕</div>
+                        </div>
+                    </li>`
+        }
+        moreVideo[0].innerHTML = videoLi;
+    </script>
+</body>
+
+</html>

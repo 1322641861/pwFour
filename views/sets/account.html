@@ -75,7 +75,9 @@
             ajaxTools.post(API.setsUpdateApi,
                 data,
                 (value) => {
-                    console.log('setsUpdateApi ==>', value)
+                    if (value && value.status === 200) {
+                        window.alert(value.msg);
+                    }
                 },
                 { 'Content-type': 'application/json' }
             )

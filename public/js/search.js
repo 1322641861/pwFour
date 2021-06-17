@@ -10,7 +10,8 @@ async function searchData() {
         await ajaxTools.get(API.searchApi + `?pre=1&p=3&ie=utf-8&json=1&prod=pc&from=pc_web&sugsid=34099,33971,31254,34004,33607,26350&wd=${text[0].value}&req=2&csor=3&pwd=12&cb=jQuery11020547018334115025_1622710888342&_=1622710888345`,
             '',
             (value) => {
-                const list = JSON.parse(value).data;
+                if (typeof value === String) value = JSON.parse(value)
+                const list = value.data;
                 if (list) {
                     let listStr = '';
                     showSearch.style.display = 'block';

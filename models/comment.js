@@ -1,6 +1,15 @@
 var mongoose = require('mongoose')
 var Schema = mongoose.Schema
 
+/**
+ * @param member: 用户信息
+ * @param like: 点赞数
+ * @param dislike: 踩
+ * @param message: 评论
+ * @param ctime: 点评时间
+ * @param vid: 视频id
+ */
+
 var commentSchema = new Schema({
     member: {
         type: Object,
@@ -22,8 +31,8 @@ var commentSchema = new Schema({
         type: Date,
         default: Date.now
     },
-    oid: {
-        type: Number,
+    vid: {
+        type: String,
         required: true
     }
 })

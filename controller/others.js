@@ -81,6 +81,13 @@ const getToken = (req, res, next) => {
 const get404Page = (req, res) => {
     res.render('404.html')
 }
+const getSendResult = ({code, msg, query}) => {
+    return {
+        status: code,
+        message: msg ? msg : '',
+        data: query ? query : null
+    }
+}
 
 const getLoginNav = async (req, res) => {
     req.session.user = await User.findOne({_id: req.session.user._id})
@@ -97,3 +104,4 @@ exports.getBaidu = getBaidu
 exports.getToken = getToken
 exports.get404Page = get404Page
 exports.getLoginNav = getLoginNav
+exports.getSendResult = getSendResult

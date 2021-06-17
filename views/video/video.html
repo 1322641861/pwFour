@@ -32,7 +32,7 @@
                 </div>
             </div>
             <div id="video-wrap" class="video-wrap">
-                <video class="" controls src="/public/videos/dance/348787967-1-208.mp4">
+                <video class="" controls src="/public/videos/dance/{{vid}}.mp4">
                     您的浏览器不支持Video标签。
                 </video>
             </div>
@@ -100,7 +100,7 @@
                 <div id="comment">
                     <div class="c-nav">
                         <ul>
-                            <li class="comment-on">按热度排序</li>
+                            <li>按热度排序</li>
                             <li>按时间排序</li>
                         </ul>
                     </div>
@@ -121,34 +121,8 @@
                 </div>
                 <!-- 用户评论 -->
                 <div class="all-comment">
-                    <ul>
-                        <li class="person-comment">
-                            <div class="passerby">
-                                <a><img src="" alt=""> </a>
-                            </div>
-                            <div class="passerby-w">
-                                <div class="p-user">
-                                    <span>阿委Warren</span>
-                                    <i></i>
-                                    <span class="is-up">
-                                        <span> UP </span>
-                                    </span>
-                                </div>
-                                <p class="p-message">告诉我你最喜欢几号的音乐</p>
-                                <div class="p-approval">
-                                    <span class="leave-time">2021-06-13</span>
-                                    <a class="like">
-                                        <i></i>
-                                        <span>8</span>
-                                    </a>
-                                    <a class="dislike">
-                                        <i></i>
-                                        <span>1</span>
-                                    </a>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
+                    <div class="person-comment up-comment"></div>
+                    <ul></ul>
                     <div class="load-all">
                         已加载全部
                     </div>
@@ -156,7 +130,8 @@
                 <!-- 底部评论框 -->
                 <div class="comment-send-lite">
                     <div class="ipt-send-lite">
-                        <textarea cols="80" name="msg" rows="5" placeholder="发一条友善的评论" class="ipt-txt" style="height: 36px;"></textarea>
+                        <textarea cols="80" name="msg" rows="5" placeholder="发一条友善的评论" class="ipt-txt"
+                            style="height: 36px;"></textarea>
                         <button type="submit" class="comment-submit">发表评论</button>
                     </div>
                     <div class="c-emoji-lite c-emoji">
@@ -264,26 +239,8 @@
     </div>
 
     {{ include '../footer.html' }}
-    <!-- <script>
-            var myVideo = document.getElementById("video1");
-
-            function playPause() {
-                myVideo.paused ? myVideo.play() : myVideo.pause();
-            }
-
-            function makeBig() {
-                myVideo.width = 560;
-            }
-
-            function makeSmall() {
-                myVideo.width = 320;
-            }
-
-            function makeNormal() {
-                myVideo.width = 420;
-            }
-        </script> -->
-    <script>
+    <script type='module'>
+        import { API } from '/public/js/api.js';
         let video = $("video");
         let floatNav = $('.float-nav')[0];
         let toTop = $('.to-top')[0];
@@ -294,8 +251,17 @@
         let videoDescMore = $('.video-desc-text span')[0];
         let viewMore = $('.view-more')[0];
         let sendLite = $('.comment-send-lite')[0];
+        let iptTextFixed = $('.ipt-send .ipt-txt')[0];
+        let commentSubmitFixed = $('.ipt-send .comment-submit')[0];
         let iptText = $('.ipt-send-lite .ipt-txt')[0];
         let commentSubmit = $('.ipt-send-lite .comment-submit')[0];
+        let passerbyComment = $('.all-comment ul')[0];
+        // 时间排序 最新评论
+        let upComment = $('.up-comment')[0];
+        let commentNav = $('.c-nav ul li');
+
+        let commentType = 0; // 0热度排序 1时间排序
+        let opacity = 0; // 底部评论框的透明度
 
         video.prop("volume", 0.2);
 
@@ -305,7 +271,7 @@
             viewMore.style.display = 'none';
         }
         // 视频描述
-        viewMore.onclick = function() {
+        viewMore.onclick = function () {
             if (viewMore.innerHTML === '展开更多') {
                 viewMore.innerHTML = '收起';
                 videoDesc.style.height = videoDescMore.offsetHeight + 30 + 'px';
@@ -315,16 +281,53 @@
             }
         }
 
-        open.onclick = function() {
+        open.onclick = function () {
             openText.innerText = openText.innerText === 'ON' ? 'OFF' : 'ON';
         }
-        
+
+        /*
+        热度排序 || 时间排序
+        */
+        let urlParams = ajaxTools.formatPostStrParams(window.location.search);
+        // 切换排序模式时 获取分页的评论数据
+        function getRangeComment() {
+            ajaxTools.get(
+                API.commentAllApi, {
+                    vid: urlParams.vid,
+                    type: commentType === 1 ? -1 : 1,
+                    page: 0,
+                    size: 20,
+                }, (value) => {
+                    if (value && value.status === 0) {
+                        passerbyComment.innerHTML = '';
+                        value.data.forEach(item => {
+                            passerbyComment.innerHTML += `<li class="person-comment">${getCommentStrModel(item)}</li>`;
+                        });
+                    }
+                }, { 'Content-type': 'application/json' }
+            );
+        }
+        // 切换排序模式
+        commentNav.each((i, e) => {
+            if (i === 0) {
+                e.className = 'comment-on';
+                getRangeComment();
+            }
+            e.onclick = function() {
+                if (commentType === i) return;
+                upComment.innerHTML = '';
+                commentType = i;
+                this.className = 'comment-on'; 
+                i === 0 ? commentNav[1].className = '' : commentNav[0].className = '';
+                getRangeComment();
+            }
+        })
+
         /*
         回到顶部 && 底部评论框
         */
-        let opacity = 0;
-        sendOpacity = function(flag) {
-            return function() {
+        var sendOpacity = function (flag) {
+            return function () {
                 if (flag) {
                     sendLite.style.display = 'block';
                     if (opacity < 1 && opacity >= 0) {
@@ -348,7 +351,7 @@
                 }
             }
         }
-        
+
         window.onscroll = function () {
             if (document.documentElement.scrollTop > 700) { // 滚动了一段位移才显示
                 floatNav.style.display = 'block';
@@ -363,9 +366,9 @@
             }
         }
         // 回到顶部
-        toTop.onclick = function() {	// 绑定事件
+        toTop.onclick = function () {	// 绑定事件
             function move() { // 动画运行中函数
-                if(document.documentElement.scrollTop>0){
+                if (document.documentElement.scrollTop > 0) {
                     document.documentElement.scrollTop *= 0.93; // 先快后慢的过渡
                     requestAnimationFrame(move);
                 }
@@ -373,18 +376,78 @@
             requestAnimationFrame(move);
         }
         // 底部评论框
-        iptText.onblur = function() {
+        iptText.onblur = function (e) {
+            if (e.relatedTarget === commentSubmit) return; // 点击提交时不改变框大小
             if (iptText.style.height === '72px') {
-                commentSubmit.style.height = 
-                iptText.style.height = '36px';
+                commentSubmit.style.height =
+                    iptText.style.height = '36px';
             }
         }
-        iptText.onfocus = function() {
+        iptText.onfocus = function () {
             if (iptText.style.height === '36px') {
-                commentSubmit.style.height = 
-                iptText.style.height = '72px';
+                commentSubmit.style.height =
+                    iptText.style.height = '72px';
             }
-        } 
+        }
+
+        // 评论
+        let commentFlag = true;
+        // 评论发布成功后的模板
+        function getCommentStrModel(data) {
+            return `<div class="passerby">
+                    <a><img src="${data.member.avatar}" alt=""> </a>
+                </div>
+                <div class="passerby-w">
+                    <div class="p-user">
+                        <span>${data.member.name}</span>
+                        <i></i>
+                        <span class="is-up">
+                            <span> UP </span>
+                        </span>
+                    </div>
+                    <p class="p-message">${data.message}</p>
+                    <div class="p-approval">
+                        <span class="leave-time">${data.ctime.slice(0, 10)}</span>
+                        <a class="like">
+                            <i></i>
+                            <span>${data.like}</span>
+                        </a>
+                        <a class="dislike">
+                            <i></i>
+                            <span>${data.dislike}</span>
+                        </a>
+                    </div>
+                </div>`;
+        }
+        // 评论上传 并 前台显示
+        let commentAdd = function (iptText) {
+            let val = iptText.value;
+            if (!val || !commentFlag) return;
+            commentFlag = false;
+            ajaxTools.post(API.commentAddApi,
+                { message: val, vid: urlParams?.vid ?? '' },
+                (value) => {
+                    if (value && value.status === 0) {
+                        const data = value.data;
+                        iptText.value = '';
+                        if (commentType !== 1) {
+                            passerbyComment.innerHTML += `<li class="person-comment">${getCommentStrModel(data)}</li>`;
+                        } else {
+                            upComment.innerHTML = getCommentStrModel(data) + upComment.innerHTML;
+                        }
+                    } else {
+                        window.alert(value.message)
+                    }
+                    commentFlag = true;
+                }, { 'Content-type': 'application/json' }
+            )
+        }
+        commentSubmit.onclick = function () {
+            commentAdd(iptText);
+        }
+        commentSubmitFixed.onclick = function () {
+            commentAdd(iptTextFixed);
+        }
     </script>
     <script>
         let moreVideo = $('.more-video ul');

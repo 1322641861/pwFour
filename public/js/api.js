@@ -4,6 +4,8 @@ const API = {
     searchApi: "/sugrec",
     logoutApi: '/logout',
     accountApi: '/member/account', // account userInfo
-    setsUpdateApi: '/sets/update' 
+    setsUpdateApi: '/sets/update',
+    commentAddApi: '/comment/add', // 评论
+    commentAllApi: '/comment/all', // 所有评论
 }
 export { API }

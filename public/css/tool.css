@@ -27,6 +27,11 @@
     padding: 10px 0;
     text-align: center;
 }
+#video-header .login-bar div.logged-more {
+    height: auto;
+    padding: 10px 0;
+    text-align: center;
+}
 #header  div.logged-more>input {
     padding: 0 10px;
 }
@@ -71,8 +76,13 @@
 #header div.login-more>input {
     width: 310px;
 }
-
-#header .nav-menu div.logged-history {
+#video-header .content>ul>li:hover>div {
+    top: 42px;
+    opacity: 1;
+    visibility: visible;
+}
+#header .nav-menu div.logged-history,
+#video-header .nav-menu div.logged-history {
     position: absolute;
     left: 50%;
     width: 400px;

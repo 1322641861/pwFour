@@ -25,7 +25,12 @@ const ajaxTools = {
         xhr.onreadystatechange = () => {
             if (xhr.readyState === 4) {
                 if (xhr.status >= 200 && xhr.status <= 300 || xhr.status === 304) {
-                    callback(xhr.responseText)
+                    // 接受后端send回来的数据
+                    let resText = xhr.responseText;
+                    if (typeof resText === 'string' && resText.indexOf('{') >= 0 && resText.indexOf('<html>')<0) {
+                        resText = JSON.parse(xhr.responseText);
+                    }
+                    callback(resText)
                 }
             }
         }

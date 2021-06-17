@@ -459,7 +459,8 @@ body{
 }
 
 #video-header .login-more>input{
-	width: 100%;
+	/* width: 100%; */
+	width: 305px;
 	height: 42px;
 	background-color: #00aed6;
 	color: #fff;
@@ -1394,6 +1395,7 @@ body{
     /* top: 50%;
     transform: translateY(-50%); */
 	margin-top: 8px;
+	overflow: hidden;
 }
 .c-send .r-send {
 	margin-right: 80px;
@@ -1468,15 +1470,20 @@ body{
     height: 48px;
 }
 .all-comment .passerby img {
-	width: 48px;
-	height: 48px;
-	border-radius: 50%;
+	width: 100%;
+    height: 100%;
+    background: #f5f5f5;
 }
 .all-comment .passerby a {
 	outline: none;
 	color: #00a1d6;
 	text-decoration: none;
 	cursor: pointer;
+	display: block;
+    overflow: hidden;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
 }
 .all-comment .passerby-w {
 	position: relative;

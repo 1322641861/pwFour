@@ -16,7 +16,7 @@ const {
 } = require('../controller/index')
 const { getBaidu, getToken, getLoginNav } = require('../controller/others')
 const { getAccount, postSetsUpdate } = require('../controller/sets')
-const { getVideo } = require('../controller/video')
+const { getVideo, postCommentAdd, getCommentAll } = require('../controller/video')
 
 const router = express.Router()
 
@@ -39,11 +39,13 @@ router
     .get('/account/avatar', getAccount)
     // .get('/member/account', getToken, getMemberAccount)
     .get('/video', getVideo)
+    .get('/comment/all', getCommentAll)
 
 router
     .post('/registered', postRegister)
     .post('/login', postLogin)
     .post('/sets/update', getToken, postSetsUpdate)
     .post('/login_nav', getToken, getLoginNav)
+    .post('/comment/add', getToken, postCommentAdd)
 
 module.exports = router

@@ -7,5 +7,6 @@ const API = {
     setsUpdateApi: '/sets/update',
     commentAddApi: '/comment/add', // 评论
     commentAllApi: '/comment/all', // 所有评论
+    setsAvatarApi: '/sets/avatar', 
 }
 export { API }

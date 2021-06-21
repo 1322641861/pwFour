@@ -5,6 +5,7 @@
     <!--存放网页提供给搜索引擎的信息-->
     <!-- <link href="/node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">  -->
     {{include '../head.html'}}
+    <link rel="stylesheet" href="/public/assets/iconfont/iconfont.css">
     <link rel="stylesheet" type="text/css" href="/public/css/login.css">
     <link rel="stylesheet" type="text/css" href="/public/css/account.css">
     <link rel="stylesheet" href="/node_modules/layui-laydate/dist/theme/default/laydate.css">
@@ -39,6 +40,12 @@
             <div class="content">
                 {{include './setting.html'}}
             </div>
+            <div class="content">
+                {{include './setting.html'}}
+            </div>
+            <div class="content">
+                {{include './avatar.html'}}
+            </div>
         </div>
     </div>
 
@@ -47,12 +54,18 @@
     <script type="module">
         import { API } from '/public/js/api.js';
         // 常规用法
-        laydate.render({elem: '#birthday'});
+        laydate.render({
+            elem: '#birthday',
+            // done: function (value, date) {
+            //     $('#birthday').change();
+            //     data.birthday = value;
+            // }
+        });
 
         let sexInputChecked = $('.set-line input[name="sex"]')
         let sexChecked = $('.set-sex')[0]
-        let birthdayStr = $('.hidden-birthday').text();
-        
+        let birthdayStr = $('.hidden-birthday')[0].innerHTML;
+
         // 初始化加载性别
         sexInputChecked.each((index, item) => {
             if (item.value === sexChecked.dataset.sex) {
@@ -67,11 +80,12 @@
                 , isInitValue: true //是否允许填充初始值，默认为 true
             });
         }
-       
+
         $('form').on('submit', (e) => {
             e.preventDefault();
             const formData = $('form').serialize();
-			let data = ajaxTools.formatPostStrParams(decodeURI(formData));
+            let data = ajaxTools.formatPostStrParams(decodeURI(formData));
+            data.birthday = $('#birthday')[0].value;
             ajaxTools.post(API.setsUpdateApi,
                 data,
                 (value) => {
@@ -87,15 +101,17 @@
     <script>
         let navLi = $('.nav-ul li');
         let pathname = window.location.pathname;
-        let navList = ['/home', '/setting', '/avatar']
-
+        let content = $('.user .content');
+        let navList = ['/home', '/setting', '/avatar'];
         // 初始化加载导航栏
         if (pathname.indexOf('/setting') >= 0) {
             navLi[1].className = 'nav-checked';
         } else if (pathname.indexOf('/home') >= 0) {
             navLi[0].className = 'nav-checked';
+            content[0].style.display = 'block';
         } else if (pathname.indexOf('/avatar') >= 0) {
             navLi[2].className = 'nav-checked';
+            content[2].style.display = 'block';
         }
 
         function navLiChecked(i) {

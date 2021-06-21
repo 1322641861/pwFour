@@ -29,7 +29,7 @@ app.use(session({
     secret: 'keyboard cat', // 增加密码复杂度(安全性,防止伪造), 别人不知道你的密码还加了什么东西
     resave: false,
     saveUninitialized: true, // 无论你是否使用session, 我都默认给你一把钥匙
-    // cookie: { secure: true }
+    // cookie: { maxAge: 1000 * 60 * 5 } // 指定登录配置有效时长
 }))
 
 // 使用路由管理, 把路由挂载到app中

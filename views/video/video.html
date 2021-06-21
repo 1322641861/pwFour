@@ -106,8 +106,9 @@
                     </div>
                 </div>
                 <!-- 发表 -->
+                {{if user}}
                 <div class="c-send">
-                    <img class="user-head" src='' alt="">
+                    <img class="user-head" src={{user.avatar}} alt="">
                     <div class="r-send">
                         <div class="ipt-send">
                             <textarea cols="80" name="msg" rows="5" placeholder="发一条友善的评论" class="ipt-txt"></textarea>
@@ -119,6 +120,24 @@
                         </div>
                     </div>
                 </div>
+                {{else}}
+                <div class="c-send">
+                    <img class="user-head" src='' alt="">
+                    <div class="textarea-container r-send">
+                        <div class="baffle-wrap">
+                            <div class="baffle">请先<a class="b-btn btn-open-mini-Login" href="/login">登录</a>后发表评论 (・ω・)</div>
+                        </div>
+                        <i class="ipt-arrow"></i>
+                        <textarea cols="80" name="msg" rows="5" placeholder="发一条友善的评论"
+                            class="ipt-txt"></textarea>
+                        <button type="submit" class="comment-submit" disabled="disabled">发表评论</button>
+                        <div class="c-emoji">
+                            <i class="pwFour icon-face"></i>
+                            <span>表情</span>
+                        </div>
+                    </div>
+                </div>
+                {{/if}}
                 <!-- 用户评论 -->
                 <div class="all-comment">
                     <div class="person-comment up-comment"></div>
@@ -128,6 +147,7 @@
                     </div>
                 </div>
                 <!-- 底部评论框 -->
+                {{if user}}
                 <div class="comment-send-lite">
                     <div class="ipt-send-lite">
                         <textarea cols="80" name="msg" rows="5" placeholder="发一条友善的评论" class="ipt-txt"
@@ -139,6 +159,22 @@
                         <span>表情</span>
                     </div>
                 </div>
+                {{else}}
+                <div class="comment-send-lite">
+                    <div class="textarea-container">
+                        <div class="baffle-wrap">
+                            <div class="baffle">请先<a class="b-btn btn-open-mini-Login" href="/login">登录</a>后发表评论 (・ω・)</div>
+                        </div>
+                        <textarea cols="80" name="msg" rows="5" placeholder="发一条友善的评论" class="ipt-txt"
+                            style="height: 36px;"></textarea>
+                        <button type="submit" class="comment-submit" disabled>发表评论</button>
+                        <div class="c-emoji-lite c-emoji">
+                            <i class="pwFour icon-face"></i>
+                            <span>表情</span>
+                        </div>
+                    </div>
+                </div>
+                {{/if}}
             </div>
         </div>
         <div class="r-con">
@@ -293,18 +329,18 @@
         function getRangeComment() {
             ajaxTools.get(
                 API.commentAllApi, {
-                    vid: urlParams.vid,
-                    type: commentType === 1 ? -1 : 1,
-                    page: 0,
-                    size: 20,
-                }, (value) => {
-                    if (value && value.status === 0) {
-                        passerbyComment.innerHTML = '';
-                        value.data.forEach(item => {
-                            passerbyComment.innerHTML += `<li class="person-comment">${getCommentStrModel(item)}</li>`;
-                        });
-                    }
-                }, { 'Content-type': 'application/json' }
+                vid: urlParams.vid,
+                type: commentType === 1 ? -1 : 1,
+                page: 0,
+                size: 20,
+            }, (value) => {
+                if (value && value.status === 0) {
+                    passerbyComment.innerHTML = '';
+                    value.data.forEach(item => {
+                        passerbyComment.innerHTML += `<li class="person-comment">${getCommentStrModel(item)}</li>`;
+                    });
+                }
+            }, { 'Content-type': 'application/json' }
             );
         }
         // 切换排序模式
@@ -313,11 +349,11 @@
                 e.className = 'comment-on';
                 getRangeComment();
             }
-            e.onclick = function() {
+            e.onclick = function () {
                 if (commentType === i) return;
                 upComment.innerHTML = '';
                 commentType = i;
-                this.className = 'comment-on'; 
+                this.className = 'comment-on';
                 i === 0 ? commentNav[1].className = '' : commentNav[0].className = '';
                 getRangeComment();
             }
@@ -445,7 +481,7 @@
         commentSubmit.onclick = function () {
             commentAdd(iptText);
         }
-        commentSubmitFixed.onclick = function () {
+        if (commentSubmitFixed) commentSubmitFixed.onclick = function () {
             commentAdd(iptTextFixed);
         }
     </script>

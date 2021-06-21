@@ -1401,6 +1401,50 @@ body{
 	margin-right: 80px;
     margin-left: 85px;
 }
+.textarea-container {
+	position: relative;
+	line-height: normal;
+	margin-right: 85px;
+}
+.textarea-container .baffle {
+	display: block;
+    position: absolute;
+    width: 100%;
+    top: 0;
+    line-height: 64px;
+    font-size: 12px;
+    border-radius: 4px;
+    text-align: center;
+    color: #777;
+    background-color: #e5e9ef;
+    overflow: hidden;
+	z-index: 2;
+}
+.textarea-container .comment-submit {
+	z-index: 2;
+    right: -80px;
+	cursor: default;
+    background-color: #e5e9ef !important;
+    border-color: #e5e9ef !important;
+    color: #b8c0cc !important;
+}
+.textarea-container .b-btn {
+	padding: 4px 9px;
+    margin: 0 3px;
+    color: #fff;
+    background-color: #00a1d6;
+    border-radius: 4px;
+}
+.textarea-container .c-emoji {
+	background-color: #e5e9ef;
+}
+.comment-send-lite .textarea-container .baffle {
+	line-height: 36px;
+}
+.comment-send-lite .textarea-container .comment-submit {
+	height: 36px;
+	padding: 0;
+}
 .ipt-txt {
 	font-size: 12px;
     display: inline-block;

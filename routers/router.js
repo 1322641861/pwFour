@@ -15,7 +15,7 @@ const {
     getMovie, getDance
 } = require('../controller/index')
 const { getBaidu, getToken, getLoginNav } = require('../controller/others')
-const { getAccount, postSetsUpdate } = require('../controller/sets')
+const { getAccount, postSetsUpdate, postAvatarUpdate } = require('../controller/sets')
 const { getVideo, postCommentAdd, getCommentAll } = require('../controller/video')
 
 const router = express.Router()
@@ -47,5 +47,6 @@ router
     .post('/sets/update', getToken, postSetsUpdate)
     .post('/login_nav', getToken, getLoginNav)
     .post('/comment/add', getToken, postCommentAdd)
+    .post('/sets/avatar', getToken, postAvatarUpdate)
 
 module.exports = router

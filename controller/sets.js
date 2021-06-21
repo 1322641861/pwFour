@@ -39,6 +39,12 @@ const postSetsUpdate = async (req, res) => {
     }
 }
 
+const postAvatarUpdate = (req, res) => {
+    console.log(req.body)
+    res.send()
+}
+
 exports.getAccount = getAccount
 exports.getMemberAccount = getMemberAccount
 exports.postSetsUpdate = postSetsUpdate
+exports.postAvatarUpdate = postAvatarUpdate

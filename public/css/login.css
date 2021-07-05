@@ -265,7 +265,14 @@ body{
 #header .nav-menu .login{
 	position: relative;
 }
-
+#header .login-bar>div  {
+	width: 36px;
+    height: 36px;
+    overflow: hidden;
+    border-radius: 50%;
+    vertical-align: middle;
+	display: inline-block;
+}
 #header .nav-menu .login>li{
 	position: relative;
 	font-size: 14px;

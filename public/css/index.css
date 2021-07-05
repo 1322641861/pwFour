@@ -409,12 +409,14 @@ body{
 	width: 100%;
 	height: 100%;
 }
-#header .login-bar>a {
+#header .login-bar>a,
+#header .login-bar>div  {
 	width: 36px;
     height: 36px;
     overflow: hidden;
     border-radius: 50%;
     vertical-align: middle;
+	display: inline-block;
 }
 
 #header .login-bar .login-more{

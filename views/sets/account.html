@@ -27,19 +27,23 @@
                         <i class='icon-0'></i>
                         <span>首页</span>
                     </li>
-                    <li onclick="navLiChecked(1)">
+                    <!-- <li onclick="navLiChecked(1)">
                         <i class='icon-1'></i>
                         <span>我的信息</span>
-                    </li>
-                    <li onclick="navLiChecked(2)">
+                    </li> -->
+                    <li onclick="navLiChecked(1)">
                         <i class='icon-2'></i>
                         <span>我的头像</span>
                     </li>
+                    <!-- <li onclick="navLiChecked(2)">
+                        <i class='icon-1'></i>
+                        <span>黑名单管理</span>
+                    </li> -->
                 </ul>
             </div>
-            <div class="content">
+            <!-- <div class="content">
                 {{include './setting.html'}}
-            </div>
+            </div> -->
             <div class="content">
                 {{include './setting.html'}}
             </div>
@@ -102,16 +106,14 @@
         let navLi = $('.nav-ul li');
         let pathname = window.location.pathname;
         let content = $('.user .content');
-        let navList = ['/home', '/setting', '/avatar'];
+        let navList = ['/home', '/avatar'];
         // 初始化加载导航栏
-        if (pathname.indexOf('/setting') >= 0) {
-            navLi[1].className = 'nav-checked';
-        } else if (pathname.indexOf('/home') >= 0) {
+        if (pathname.indexOf('/home') >= 0) {
             navLi[0].className = 'nav-checked';
             content[0].style.display = 'block';
         } else if (pathname.indexOf('/avatar') >= 0) {
-            navLi[2].className = 'nav-checked';
-            content[2].style.display = 'block';
+            navLi[1].className = 'nav-checked';
+            content[1].style.display = 'block';
         }
 
         function navLiChecked(i) {

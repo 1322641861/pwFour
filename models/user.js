@@ -34,7 +34,7 @@ var userSchema = new Schema({
     },
     avatar: {
         type: String,
-        default: '/public/images/avatar_default.png'
+        default: '/public/images/avatar/avatar_default.png'
     },
     description: {
         type: String,
@@ -53,6 +53,10 @@ var userSchema = new Schema({
     keep: {
         type: Boolean,
         default: true
+    },
+    base64Avatar: {
+        type: String,
+        default: ''
     }
 })
 

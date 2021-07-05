@@ -7,9 +7,9 @@
         <!-- <label for="img">头像:</label> -->
         <div class="avatar-wrap">
             <div class="img-box">
-                <!-- <input id="upload-img" type="hidden" name="img"> -->
-                <input type="file" onchange="uploadImg()" id="img-input">
-                
+                <input id="upload-img" type="hidden" name="img">
+                <input type="file" id="img-input">
+
                 <div class="add-img-wrap">
                     <div class="add-img">
                         <i class="pwFour icon-picture"></i>
@@ -22,7 +22,7 @@
             <div class="avatar-show-wrap">
                 <div class="avatar-show">
                     {{if user}}
-                    <img src="/public/images/avatar/avatar_default.png" alt="">
+                    <img style="background: url({{user.avatar}}) center/cover;" alt="">
                     {{else}}
                     <img src="/public/images/favicon.ico" alt="">
                     {{/if}}
@@ -32,16 +32,15 @@
         </div>
         <p class="upload-tip">请选择图片上传：大小180 * 180像素支持JPG、PNG等格式，图片需小于2M</p>
         <div class="upload-wrap">
-            <input type="button" class="default-btn" value="更新">
+            <input type="button" class="default-btn disabled" value="更新">
         </div>
     </div>
 </div>
 
-<script>
+<script type="module">
+    import { API } from '/public/js/api.js'
     function listenImgSrc() {
         const imgTag = document.getElementById('img-url')
-        // const imgSrc = imgTag.getAttributeNode('src').value
-        // if (!imgSrc) {
         if (!imgTag.style.background) {
             imgTag.style.display = 'none'
         } else {
@@ -50,12 +49,19 @@
     }
     listenImgSrc()
 
+    const imgInput = $('#img-input')[0];
+    const defaultBtn = $('.upload-wrap .default-btn');
+    let uploadImg = document.getElementById('upload-img')
+    let uploadData = {}
+    imgInput.onchange = uploadImgFn
+
     // 图片上传
-    function uploadImg() {
+    function uploadImgFn() {
         var file = document.getElementById("img-input").files[0]
         var img = document.getElementById("img-url")
-        var uploadImg = document.getElementById('upload-img')
+        // var uploadImg = document.getElementById('upload-img')
         var reader = new FileReader()
+        console.log(file, API.setsAvatarApi);
 
         // 图片限值 max (2M = 2097152 B) 超过2M上传失败
         const allowImgFileSize = 2100000
@@ -64,30 +70,42 @@
 
         reader.readAsDataURL(file)
         reader.onload = (e) => {
+            console.log('e =>', e)
             if (allowImgFileSize < e.target.result.length) return alert('上传失败, 图片大小不能超过2M')
             // 前端显示用户选择的图片
             // img.getAttributeNode("src").value = e.target.result
             img.style.background = `url(${e.target.result}) center/cover`
-            img.style.height = '100px'
+            img.style.height = '180px'
             // 设置 写进数据库的图片地址参数
-            uploadImg.value = '/public/assets/' + file.name
+            uploadImg.value = '/public/images/avatar/' + file.name
             // 传入后台的 base64 图片数据
             // base64格式过滤, 此处后端处理
-            let uploadData = {
+            uploadData = {
                 // fileImg: e.target.result.split(',')[1],
                 fileImg: e.target.result,
                 fileType: file.type,
                 fileName: file.name,
                 fileSize: file.size
             }
-            ajaxTools.post('http://localhost:3000/family/upload', uploadData, (res) => {
-                if (res) {
-                    console.log('返回的数据: ', res)
-                    listenImgSrc()
-                } else {
-                    console.log('请求失败')
-                }
-            })
+            defaultBtn.removeClass('disabled');
+            listenImgSrc()
+        }
+    }
+
+    defaultBtn[0].onclick = function () {
+        if (defaultBtn.hasClass('disabled')) return;
+        if (uploadImg.value) {
+            ajaxTools.post(API.setsAvatarApi,
+                uploadData,
+                (res) => {
+                    if (res && res.status === 200) {
+                        window.location.href = '/account/avatar';
+                        // console.log('返回的数据: ', res)
+                        // listenImgSrc()
+                    } else {
+                        window.alert('请求失败');
+                    }
+                })
         }
     }
 </script>

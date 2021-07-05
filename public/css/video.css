@@ -1653,6 +1653,7 @@ body{
 	right: 6px;
 	bottom: 100px;
 	display: none;
+	z-index: 2;
 }
 .float-nav div {
 	font-size: 28px;

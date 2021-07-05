@@ -154,6 +154,12 @@
 /* custom loop */
 
 /* 全局按钮样式 */
+.default-btn.disabled {
+    background: #f4f5f7;
+    border-color: #f4f5f7;
+    color: #ccd0d7;
+    cursor: auto;
+}
 .default-btn {
     height: 34px;
     background-color: #00aed6;

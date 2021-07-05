@@ -406,10 +406,15 @@ body{
 
 #header .login-bar .login-head{
 	display: inline-block;
+	width: 100%;
+	height: 100%;
+}
+#header .login-bar>a {
 	width: 36px;
-	height: 36px;
-	border-radius: 50%;
-	vertical-align: middle;
+    height: 36px;
+    overflow: hidden;
+    border-radius: 50%;
+    vertical-align: middle;
 }
 
 #header .login-bar .login-more{
@@ -426,6 +431,7 @@ body{
 	transition: .3s .3s;
 	visibility: hidden;
 	opacity: 0;
+	text-align: center;
 }
 #header .login-more .danmu{
 	width: 325px;

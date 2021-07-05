@@ -137,7 +137,7 @@
             <li class="login-bar">
                 {{if user}} 
                 <a href="/account/home" class="avatar-border">
-                    <img class="login-head" src={{user.avatar}}>
+                    <img class="login-head" style="background: url({{user.avatar}}) center/cover">
                 </a>
                 {{else}}
                 <img class="login-head" src="/public/images/avatar/avatar_default.png">

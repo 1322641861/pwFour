@@ -402,15 +402,29 @@
             }
         }
         // 回到顶部
+        var scrollFn = function(e) {
+            e = e || window.event;
+            if(e.wheelDelta){ //IE/Opera/Chrome 
+                cancelAnimationFrame(renderId);  
+            } else if(e.detail){ //Firefox  
+                cancelAnimationFrame(renderId);
+            }  
+        }
         toTop.onclick = function () {	// 绑定事件
             function move() { // 动画运行中函数
                 if (document.documentElement.scrollTop > 0) {
                     document.documentElement.scrollTop *= 0.93; // 先快后慢的过渡
-                    requestAnimationFrame(move);
+                    renderId = requestAnimationFrame(move);
+                } else {
+                    $(document).unbind('mousewheel DOMMouseScroll');
                 }
             }
-            requestAnimationFrame(move);
+            var renderId = requestAnimationFrame(move);
+            $(document).bind('mousewheel DOMMouseScroll', (event, delta) => {
+                cancelAnimationFrame(renderId); // 鼠标滚动时取消动画
+            })
         }
+
         // 底部评论框
         iptText.onblur = function (e) {
             if (e.relatedTarget === commentSubmit) return; // 点击提交时不改变框大小

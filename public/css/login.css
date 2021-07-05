@@ -416,9 +416,8 @@ body{
 
 #header .login-bar .login-head{
 	display: inline-block;
-	width: 36px;
-	height: 36px;
-	border-radius: 50%;
+	width: 100%;
+	height: 100%;
 }
 
 #header .login-bar .login-more{

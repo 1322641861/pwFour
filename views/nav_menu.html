@@ -140,7 +140,9 @@
                     <img class="login-head" style="background: url({{user.avatar}}) center/cover">
                 </a>
                 {{else}}
-                <img class="login-head" src="/public/images/avatar/avatar_default.png">
+                <a class="avatar-border">
+                    <img class="login-head" src="/public/images/avatar/avatar_default.png">
+                </a>
                 {{/if}}
                
                 {{if user}}

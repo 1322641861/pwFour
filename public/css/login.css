@@ -758,3 +758,11 @@ body{
 .login-agree a {
 	color: #00a1ff;
 }
+
+#footer .beian {
+	text-align: center;
+    color: #999;
+    font-size: 14px;
+    border-top: 1px solid #eee;
+    padding-top: 25px;
+}

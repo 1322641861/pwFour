@@ -749,3 +749,11 @@ body{
     transform: translate(250px, -50%);
 	color: #ef6acc;
 }
+
+#footer .beian {
+	text-align: center;
+    color: #999;
+    font-size: 14px;
+    border-top: 1px solid #eee;
+    padding-top: 25px;
+}

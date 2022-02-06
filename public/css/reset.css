@@ -8,7 +8,7 @@ body,ul,p,figure,h1,h2,h3,h4,h5,h6{
 a{
 	color: #222;
 	text-decoration: none;
-	display: inline-block;
+	/* display: inline-block; */
     line-height: normal;
 }
 ul{

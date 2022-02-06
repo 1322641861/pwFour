@@ -663,9 +663,9 @@ body{
 
 
 /* most-view*/
-#most-view{
-	/*height: 220px;*/
-}
+/* #most-view{
+	height: 220px;
+} */
 #most-view .content{
 	width: 1161px;
 	margin: 0 auto;
@@ -1146,7 +1146,6 @@ body{
 			position: relative;
 			width: 100px;
 			height: 90px;
-			float: right;
 			display: inline-block;
 		}
 		#animation .info .timeTab li .timeRight .tRa{
@@ -1196,6 +1195,14 @@ body{
 	height: 100%;
 	margin: 0 auto;
 	border-top:1px #f6f9fa solid;
+	background-color: #f6f9fa;
+}
+#footer .beian {
+	text-align: center;
+    color: #999;
+    font-size: 14px;
+    border-top: 1px solid #eee;
+    padding-top: 25px;
 }
 #footer .content .link{
 	/*display: flex;*/
@@ -1308,9 +1315,6 @@ body{
 	width: 100%;
 }
 /* foot send*/
-.products-card{
-	/* width:  */
-}
 
 /* 右侧导航栏right nav */
 div.floatCtro{
@@ -1334,6 +1338,12 @@ div.floatCtro{
 	cursor: pointer;
 	transition: .2s;
 	border: 1px solid #d1d1d1;
+}
+.floatCtro p a {
+	width: 100%;
+    height: 100%;
+    overflow: hidden;
+    line-height: 42px;
 }
 .floatCtro p:nth-child(6){
 	border-radius: 0 0 5px 5px;

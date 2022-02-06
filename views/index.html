@@ -508,7 +508,7 @@
 						<button class="btn1" id="button">换一天</button>
 					</div>
 					<!-- 周一 -->
-					<ul class="timeTab" name="timeTab" style="">
+					<ul class="timeTab" name="timeTab">
 						<li>
 							<div class="timeLeft"><img src="/public/images/drama/6.jpg" alt=""></div>
 							<div class="timeRight">
@@ -1613,7 +1613,7 @@
 		<p><a href="#ghost">鬼畜</a></p>
 		<p><a href="#amusement">娱乐</a></p>
 		<p><a href="#screens">放映厅</a></p>
-		<p><a href="#header">返回顶部</a></p>
+		<p><a class="to-top">返回顶部</a></p>
 	</div>
 
 	{{ include './footer.html' }}
@@ -1621,18 +1621,42 @@
 	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.2/js/swiper.min.js"></script> -->
 	<script src="/public/js/customLoop.js"></script>
 	<script>
-		var mySwiper = new Swiper('.swiper-container', {
-			direction: 'horizontal',
-			loop: true,
-			autoplay: {
-				delay: 2000,
-				stopOnLastSlide: false,
-				disableOnInteraction: true,
-			},
-			pagination: {
-				el: '.swiper-pagination',
-			}
-		})
+		// var mySwiper = new Swiper('.swiper-container', {
+		// 	direction: 'horizontal',
+		// 	loop: true,
+		// 	autoplay: {
+		// 		delay: 2000,
+		// 		stopOnLastSlide: false,
+		// 		disableOnInteraction: true,
+		// 	},
+		// 	pagination: {
+		// 		el: '.swiper-pagination',
+		// 	}
+		// })
+		var toTop = $('.to-top')[0];
+		// 回到顶部
+        var scrollFn = function(e) {
+            e = e || window.event;
+            if(e.wheelDelta){ //IE/Opera/Chrome 
+                cancelAnimationFrame(renderId);  
+            } else if(e.detail){ //Firefox  
+                cancelAnimationFrame(renderId);
+            }  
+        }
+        toTop.onclick = function () {	// 绑定事件
+            function move() { // 动画运行中函数
+                if (document.documentElement.scrollTop > 0) {
+                    document.documentElement.scrollTop *= 0.93; // 先快后慢的过渡
+                    renderId = requestAnimationFrame(move);
+                } else {
+                    $(document).unbind('mousewheel DOMMouseScroll');
+                }
+            }
+            var renderId = requestAnimationFrame(move);
+            $(document).bind('mousewheel DOMMouseScroll', (event, delta) => {
+                cancelAnimationFrame(renderId); // 鼠标滚动时取消动画
+            })
+        }
 	</script>
 
 	<script>

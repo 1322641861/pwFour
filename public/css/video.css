@@ -420,6 +420,7 @@ body{
 	width: 36px;
 	height: 36px;
 	border-radius: 50%;
+	vertical-align: middle;
 }
 
 #video-header .login-bar .login-more{
@@ -1689,4 +1690,11 @@ body{
 .float-nav .item span {
     line-height: 18px;
     font-size: 12px;
+}
+#footer .beian {
+	text-align: center;
+    color: #999;
+    font-size: 14px;
+    border-top: 1px solid #eee;
+    padding-top: 25px;
 }
